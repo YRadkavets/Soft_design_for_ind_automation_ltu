@@ -1,6 +1,6 @@
 # Technical Documentation: Control System
 
-*Reference: "Technical Documentation_ Control System_2.docx"*
+
 
 ## 1. System Requirements
 
@@ -29,10 +29,9 @@
 The control system is structured into a multi-layered architecture:
 
 ![Multi-layered Architecture Diagram](./Documentation/diagrams/screenshots/controller.png)
-*(Placeholder: Insert controller architecture schematic)*
+
 
 ![Process State Machine](./Documentation/diagrams/screenshots/RP.png)
-*(Placeholder: Insert overarching state machine with Wait, Recipe1, Recipe2, Stop)*
 
 * **Presentation Layer**: Controls sequence of actions in recipes.
 * **Process Layer**: Manages the core logic of the system, determining the active states of recipes and monitoring current sensor values against target values.
@@ -45,15 +44,15 @@ The system uses function blocks to control the sequence of actions for two disti
 **First Recipe Block**: Uses a state machine transitioning from START to DRAIN, and then through sequential positions (POS1, POS2, POS3) before reaching COMPLETE. Transitions rely on conditions checking if the current level and temperature are near their target values within a specified range (delta).
 
 ![First Recipe State Machine](./Documentation/diagrams/screenshots/R1.png)
-*(Placeholder: Insert first recipe state machine schematic)*
+
 
 **Second Recipe Block**: Similar to the first, but introduces specific timer implementations (TIMER, TIMER2) that delay the transition between certain states, outputting START_TIMER signals when active.
 
 ![Second Recipe State Machine](./Documentation/diagrams/screenshots/R2.png)
-*(Placeholder: Insert second recipe state machine schematic)*
+
 
 ![Timer Implementations](./Documentation/diagrams/screenshots/R2_interface.png)
-*(Placeholder: Insert timer FB6 and FB9 schematic)*
+
 
 ---
 
@@ -70,7 +69,7 @@ Effective alarm handling is critical for operational safety and system integrity
 The alarm system is implemented using ALARM_BIT function blocks that monitor the positive level edges of the sensor triggers.
 
 ![Alarm Implementation Logic](./Documentation/diagrams/screenshots/alarms.png)
-*(Placeholder: Insert ALARM_BIT block schematic)*
+
 
 ---
 
