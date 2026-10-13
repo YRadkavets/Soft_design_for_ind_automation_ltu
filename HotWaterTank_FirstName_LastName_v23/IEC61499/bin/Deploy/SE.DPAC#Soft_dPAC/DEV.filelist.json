@@ -1,0 +1,63 @@
+{
+  "snapshot": {
+    "guid": "62ec78ae-9b3c-42a1-9ee6-7f83e0a2098a",
+    "hash": "F2ACA007015CE3861920D46D91D369E935434BEAF0F9F69AD2EB3DFCCEC99BBB",
+    "app": {
+      "hash": "ECA68081E18A2ED53B7B6632214F1C9CD382E2F24005718C6D6BA408C339A701",
+      "items": [
+        "Main#integEC.bin",
+        "Main#ChangeDetect_REAL.bin",
+        "Main#TankValves.bin",
+        "Main#Tank_HMI.bin",
+        "Main#LimiterLevel.bin",
+        "Main#Overpressure.bin",
+        "Main#Tank.bin",
+        "Main#Resistance_HMI.bin",
+        "Main#LimiterTemp.bin",
+        "Main#HeatCalc.bin",
+        "Main#Resistance.bin",
+        "Main#TankResis.bin",
+        "Main#ThermometerS_HMI.bin",
+        "Main#InRange.bin",
+        "Main#ChangeDetect_BOOL.bin",
+        "Main#ThermometerS.bin",
+        "Main#Sensor_HMI.bin",
+        "Main#Sensor.bin",
+        "Main#LevelSensors.bin",
+        "Main#Model.bin",
+        "Main#ButtonM_HMI.bin",
+        "Main#ButtonM.bin",
+        "Main#Heat_Control_Slider_HMI.bin",
+        "Main#Heat_Control_Slider.bin",
+        "Main#Level_Control_Slider_HMI.bin",
+        "Main#Level_Control_Slider.bin",
+        "Main#HMI_BLOCKS.bin",
+        "Main#RP.bin",
+        "Main#PID.bin",
+        "Main#invert_output.bin",
+        "Main#Heat_Control.bin",
+        "Main#normalise.bin",
+        "Main#normalise1.bin",
+        "Main#PID_Level.bin",
+        "Main#Level_Control.bin",
+        "Main#R1.bin",
+        "Main#R2.bin",
+        "Main#DS_SELECTX_241474DAEB4FE6DF6.bin",
+        "Main#Controller.bin",
+        "Main#wtch_trend_HMI.bin",
+        "Main#wtch_trend.bin",
+        "SE.DPAC#DS_SELECTX_2536758B411A6CE51.bin",
+        "SE.DPAC#DPAC_FULLINIT.bin",
+        "Device.bin",
+        "PersDesc.xml",
+        "AlarmConfig.xml"
+      ]
+    },
+    "persistence": [
+      {
+        "path": "offline.opd",
+        "location": "Persistence"
+      }
+    ]
+  }
+}

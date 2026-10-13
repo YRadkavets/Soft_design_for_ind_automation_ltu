@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
+<FBType GUID="535345a0-503e-4916-8723-d398a0444b13" Name="R2" Comment="Basic Function Block Type" Namespace="Main">
+  <Identification Standard="61499-2" />
+  <VersionInfo Organization="nxtControl GmBH" Version="0.0" Author="lizar" Date="10/11/2026" Remarks="Template" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="START" Comment="Normal Execution Request">
+        <With Var="X3" />
+        <With Var="Y3" />
+        <With Var="X4" />
+        <With Var="Y4" />
+        <With Var="delta" />
+        <With Var="T1" />
+        <With Var="T2" />
+        <With Var="InitialLevel" />
+        <With Var="InitialTemp" />
+      </Event>
+      <Event Name="STOP" />
+      <Event Name="REQ">
+        <With Var="CurrentLevel" />
+        <With Var="CurrentTemp" />
+      </Event>
+      <Event Name="TIMER_OUT" />
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="CNF" Comment="Execution Confirmation">
+        <With Var="TargetLevel" />
+        <With Var="TargetTemp" />
+      </Event>
+      <Event Name="COMPLETE" />
+      <Event Name="START_TIMER">
+        <With Var="TimerTime" />
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Name="X3" Type="REAL" Comment="Input event qualifier" />
+      <VarDeclaration Name="Y3" Type="REAL" />
+      <VarDeclaration Name="X4" Type="REAL" />
+      <VarDeclaration Name="Y4" Type="REAL" />
+      <VarDeclaration Name="CurrentLevel" Type="REAL" />
+      <VarDeclaration Name="CurrentTemp" Type="REAL" />
+      <VarDeclaration Name="delta" Type="REAL" />
+      <VarDeclaration Name="T1" Type="TIME" />
+      <VarDeclaration Name="T2" Type="TIME" />
+      <VarDeclaration Name="InitialLevel" Type="REAL" />
+      <VarDeclaration Name="InitialTemp" Type="REAL" />
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Name="TargetLevel" Type="REAL" />
+      <VarDeclaration Name="TargetTemp" Type="REAL" />
+      <VarDeclaration Name="TimerTime" Type="TIME" />
+    </OutputVars>
+  </InterfaceList>
+  <BasicFB>
+    <Attribute Name="FBType.Basic.Algorithm.Order" Value="Drain,pos1,pos2,pos3,Timer_1,Timer_2" />
+    <ECC>
+      <ECState Name="START" Comment="Initial State" x="456.9412" y="653.4117" />
+      <ECState Name="DRAIN" x="840" y="336">
+        <ECAction Algorithm="Drain" Output="CNF" />
+      </ECState>
+      <ECState Name="POS1" x="1220" y="604">
+        <ECAction Algorithm="pos1" Output="CNF" />
+      </ECState>
+      <ECState Name="POS2" x="1224" y="872">
+        <ECAction Algorithm="pos2" Output="CNF" />
+      </ECState>
+      <ECState Name="POS3" x="1212" y="1152">
+        <ECAction Algorithm="pos3" Output="CNF" />
+      </ECState>
+      <ECState Name="COMPLETE" x="848" y="1480">
+        <ECAction Output="COMPLETE" />
+      </ECState>
+      <ECState Name="TIMER" x="2180" y="760">
+        <ECAction Algorithm="Timer_1" Output="START_TIMER" />
+      </ECState>
+      <ECState Name="TIMER2" x="2164" y="1040">
+        <ECAction Algorithm="Timer_2" Output="START_TIMER" />
+      </ECState>
+      <ECTransition Source="START" Destination="DRAIN" Condition="START" x="637.1947" y="415.6204">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="151.4048,107.5534,172.8306,89.79951" />
+      </ECTransition>
+      <ECTransition Source="DRAIN" Destination="POS1" Condition="CurrentLevel&gt;=0-delta AND CurrentLevel&lt;=0+delta" x="1085.604" y="404.0562">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="262.2411,90.25172,281.5761,103.888" />
+      </ECTransition>
+      <ECTransition Source="POS3" Destination="COMPLETE" Condition="(CurrentLevel&gt;=InitialLevel-delta AND CurrentLevel&lt;=InitialLevel+delta) AND(CurrentTemp&gt;=InitialTemp-delta AND CurrentTemp &lt;= InitialTemp+delta) " x="1101.401" y="1372.281">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="284.5762,338.2541,263.8945,356.8904" />
+      </ECTransition>
+      <ECTransition Source="COMPLETE" Destination="START" Condition="1" x="650.0857" y="1141.706">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="177.3545,321.7691,148.8808,261.5838" />
+      </ECTransition>
+      <ECTransition Source="DRAIN" Destination="START" Condition="STOP" x="709.7345" y="555.4618">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="188.7816,134.0495,167.3558,151.8035" />
+      </ECTransition>
+      <ECTransition Source="POS1" Destination="START" Condition="STOP" x="851.4487" y="713.3208">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="234.9537,180.5883,191.5784,183.397" />
+      </ECTransition>
+      <ECTransition Source="POS2" Destination="START" Condition="STOP" x="843.0555" y="846.8474">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="234.0049,222.4836,190.2962,210.028" />
+      </ECTransition>
+      <ECTransition Source="POS3" Destination="START" Condition="STOP" x="826.7222" y="979.9766">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="233.4931,267.1025,183.7422,234.2505" />
+      </ECTransition>
+      <ECTransition Source="POS1" Destination="TIMER" Condition="(CurrentLevel&gt;=X3-delta AND CurrentLevel&lt;=X3+delta) AND (CurrentTemp&gt;=Y3-delta AND CurrentTemp&lt;=Y3+delta) " x="1677.11" y="685.9105">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="387.7831,166.7423,447.9413,176.5181" />
+      </ECTransition>
+      <ECTransition Source="TIMER" Destination="POS2" Condition="TIMER_OUT" x="1649.076" y="779.5482">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="438.2632,189.7406,378.4384,196.7495" />
+      </ECTransition>
+      <ECTransition Source="POS2" Destination="TIMER2" Condition="(CurrentLevel&gt;=X4-delta AND CurrentLevel&lt;=X4+delta) AND (CurrentTemp&gt;=Y4-delta AND CurrentTemp&lt;=Y4+delta) " x="1697.409" y="872.3956">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="395.9405,208.6783,453.1961,218.9112" />
+      </ECTransition>
+      <ECTransition Source="TIMER2" Destination="POS3" Condition="TIMER_OUT" x="1684.464" y="1180.5">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="450.7188,295.7937,392.4631,302.6474" />
+      </ECTransition>
+      <ECTransition Source="TIMER" Destination="START" Condition="STOP" x="1137.97" y="759.9219">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="327.3461,179.0077,212,206" />
+      </ECTransition>
+      <ECTransition Source="TIMER2" Destination="START" Condition="STOP" x="1089.236" y="994.026">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="317.3818,271.8676,197.5599,244.7321" />
+      </ECTransition>
+    </ECC>
+    <Algorithm Name="Drain">
+      <ST><![CDATA[TargetLevel:= 0;
+TargetTemp := 0;
+]]></ST>
+    </Algorithm>
+    <Algorithm Name="pos1">
+      <ST><![CDATA[TargetLevel:= X3;
+TargetTemp := Y3;]]></ST>
+    </Algorithm>
+    <Algorithm Name="pos2">
+      <ST><![CDATA[TargetLevel:= X4;
+TargetTemp := Y4;]]></ST>
+    </Algorithm>
+    <Algorithm Name="pos3">
+      <ST><![CDATA[TargetLevel:= InitialLevel;
+TargetTemp:= InitialTemp;]]></ST>
+    </Algorithm>
+    <Algorithm Name="Timer_1">
+      <ST><![CDATA[TimerTime:= T1;]]></ST>
+    </Algorithm>
+    <Algorithm Name="Timer_2">
+      <ST><![CDATA[TimerTime:= T2;]]></ST>
+    </Algorithm>
+  </BasicFB>
+</FBType>
