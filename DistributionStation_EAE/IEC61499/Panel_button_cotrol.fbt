@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
+<FBType GUID="c60863a9-d4a0-4ba8-8b94-b12dcc59bc56" Name="Panel_button_cotrol" Comment="Basic Function Block Type" Namespace="Main">
+  <Identification Standard="61499-2" />
+  <VersionInfo Organization="Schneider Electric" Version="0.0" Author="lizar" Date="10/19/2026" Remarks="Template" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="INIT" Comment="Initialization Request">
+        <With Var="empty" />
+      </Event>
+      <Event Name="REQ" Comment="Normal Execution Request">
+        <With Var="empty" />
+        <With Var="start" />
+        <With Var="reset" />
+        <With Var="manual" />
+        <With Var="stop" />
+      </Event>
+      <Event Name="BLINK">
+        <With Var="ack_led_i" />
+      </Event>
+      <Event Name="ACK" />
+      <Event Name="EMPTY_TIMEOUT" />
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="INITO" Comment="Initialization Confirm">
+        <With Var="ack_led" />
+      </Event>
+      <Event Name="CNF" Comment="Execution Confirmation">
+        <With Var="ack_led" />
+        <With Var="start_led" />
+        <With Var="reset_led" />
+      </Event>
+      <Event Name="START_TIMER" />
+      <Event Name="STOP_TIMER" />
+      <Event Name="START_EMPTY_TIMEOUT" />
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Name="start" Type="BOOL" />
+      <VarDeclaration Name="reset" Type="BOOL" />
+      <VarDeclaration Name="empty" Type="BOOL" Comment="Input event qualifier" />
+      <VarDeclaration Name="ack_led_i" Type="BOOL" />
+      <VarDeclaration Name="manual" Type="BOOL" />
+      <VarDeclaration Name="stop" Type="BOOL" />
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Name="start_led" Type="BOOL" />
+      <VarDeclaration Name="reset_led" Type="BOOL" />
+      <VarDeclaration Name="ack_led" Type="BOOL" Comment="Output event qualifier" />
+    </OutputVars>
+  </InterfaceList>
+  <BasicFB>
+    <Attribute Name="FBType.Basic.Algorithm.Order" Value="INIT,REQ,BLINK,TURN_OFF" />
+    <ECC>
+      <ECState Name="START" Comment="Initial State" x="552.9412" y="429.4117" />
+      <ECState Name="INIT" Comment="Initialization" x="923.5294" y="141.1765">
+        <ECAction Algorithm="INIT" Output="INITO" />
+      </ECState>
+      <ECState Name="EMPTY" Comment="Normal execution" x="157.647" y="1840.941">
+        <ECAction Algorithm="REQ" Output="START_TIMER" />
+      </ECState>
+      <ECState Name="BLINK" x="1212" y="568">
+        <ECAction Algorithm="BLINK" Output="CNF" />
+      </ECState>
+      <ECState Name="ACKNOWLEDGED" x="1764" y="1416">
+        <ECAction Output="STOP_TIMER" />
+        <ECAction Algorithm="TURN_OFF" Output="CNF" />
+      </ECState>
+      <ECState Name="EMPTY_MB" x="648" y="1408">
+        <ECAction Output="START_EMPTY_TIMEOUT" />
+      </ECState>
+      <ECTransition Source="START" Destination="INIT" Condition="INIT" x="731.1476" y="204.8375" />
+      <ECTransition Source="INIT" Destination="START" Condition="1" x="797.5924" y="348.3232" />
+      <ECTransition Source="START" Destination="EMPTY_MB" Condition="REQ[empty]" x="678.937" y="911.4545">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="171.4622,190.8334,178.5389,263.6854" />
+      </ECTransition>
+      <ECTransition Source="START" Destination="BLINK" Condition="BLINK" x="907.8361" y="417.2424">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="209.947,96.88586,244.162,104.0807" />
+      </ECTransition>
+      <ECTransition Source="BLINK" Destination="START" Condition="1" x="882.5978" y="583.7297">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="239.0175,153.5456,204.8025,146.3508" />
+      </ECTransition>
+      <ECTransition Source="START" Destination="ACKNOWLEDGED" Condition="ACK" x="1191.753" y="861.3241">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="256.2025,175.7021,341.6519,244.7297" />
+      </ECTransition>
+      <ECTransition Source="ACKNOWLEDGED" Destination="START" Condition="REQ[reset]" x="1153.425" y="997.7059">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="334.7405,292.4358,244.4948,218.9171" />
+      </ECTransition>
+      <ECTransition Source="EMPTY" Destination="START" Condition="1" x="363.1074" y="1019.921">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="76.40441,299.8787,107.0487,190.8724" />
+      </ECTransition>
+      <ECTransition Source="EMPTY_MB" Destination="EMPTY" Condition="EMPTY_TIMEOUT" x="465.972" y="1681.394">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="132.7585,411.1677,101.7461,438.549" />
+      </ECTransition>
+      <ECTransition Source="EMPTY_MB" Destination="START" Condition="REQ[NOT empty]" x="600.0676" y="993.7058">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="153.656,291.1024,146.5793,218.2505" />
+      </ECTransition>
+    </ECC>
+    <Algorithm Name="INIT" Comment="Initialization algorithm">
+      <ST><![CDATA[;
+ack_led:=TRUE;]]></ST>
+    </Algorithm>
+    <Algorithm Name="REQ" Comment="Normally executed algorithm">
+      <ST><![CDATA[;]]></ST>
+    </Algorithm>
+    <Algorithm Name="BLINK">
+      <ST><![CDATA[;
+ack_led := NOT(ack_led_i);]]></ST>
+    </Algorithm>
+    <Algorithm Name="TURN_OFF">
+      <ST><![CDATA[;
+ack_led:=FALSE;]]></ST>
+    </Algorithm>
+  </BasicFB>
+</FBType>

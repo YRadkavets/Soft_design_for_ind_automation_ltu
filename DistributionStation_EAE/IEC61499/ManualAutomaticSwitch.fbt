@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
+<FBType GUID="fa7c045d-f620-437d-abd6-4f859a78af7f" Name="ManualAutomaticSwitch" Comment="Basic Function Block Type" Namespace="Main">
+  <Identification Standard="61499-2" />
+  <VersionInfo Organization="Schneider Electric" Version="0.0" Author="lizar" Date="10/19/2026" Remarks="Template" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="REQ" Comment="Normal Execution Request">
+        <With Var="manual" />
+      </Event>
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="MANUAL" />
+      <Event Name="AUTOMATIC" />
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Name="manual" Type="BOOL" Comment="Input event qualifier" />
+    </InputVars>
+  </InterfaceList>
+  <BasicFB>
+    <Attribute Name="FBType.Basic.Algorithm.Order" Value="" />
+    <ECC>
+      <ECState Name="START" Comment="Initial State" x="712.9412" y="181.4117" />
+      <ECState Name="MANUAL" Comment="Normal execution" x="217.647" y="752.9412">
+        <ECAction Output="MANUAL" />
+      </ECState>
+      <ECState Name="AUTOMATIC" x="1464" y="740">
+        <ECAction Output="AUTOMATIC" />
+      </ECState>
+      <ECTransition Source="START" Destination="MANUAL" Condition="REQ[manual]" x="531.1902" y="516.2944">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="152.085,113.7016,118.3475,152.632" />
+      </ECTransition>
+      <ECTransition Source="MANUAL" Destination="START" Condition="1" x="458.2196" y="392.1765">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="99.45475,111.2593,133.1923,72.32891" />
+      </ECTransition>
+      <ECTransition Source="START" Destination="AUTOMATIC" Condition="REQ[NOT manual]" x="1147.093" y="405.4586">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="266.1937,80.23883,309.8156,113.2826" />
+      </ECTransition>
+      <ECTransition Source="AUTOMATIC" Destination="START" Condition="1" x="1065.034" y="528.447">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="292.1099,155.3984,243.7463,120.1153" />
+      </ECTransition>
+    </ECC>
+  </BasicFB>
+</FBType>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
+<FBType GUID="215E2403323B6187" Name="Test" Comment="Composite Function Block Type" Namespace="Main">
+  <Attribute Name="Configuration.FB.IDCounter" Value="1" />
+  <Identification Standard="61499-2" />
+  <VersionInfo Organization="nxtControl GmbH" Version="0.0" Author="Andrei" Date="7/14/2016" Remarks="template" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="INIT" Comment="Initialization Request" />
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="INITO" Comment="Initialization Confirm">
+        <With Var="Retract" />
+        <With Var="to_mgz" />
+        <With Var="to_next" />
+        <With Var="vcm_on" />
+        <With Var="vm_off" />
+      </Event>
+      <Event Name="CNF" Comment="Execution Confirmation">
+        <With Var="Retract" />
+        <With Var="to_mgz" />
+        <With Var="to_next" />
+        <With Var="vcm_on" />
+        <With Var="vm_off" />
+      </Event>
+    </EventOutputs>
+    <OutputVars>
+      <VarDeclaration Name="Retract" Type="BOOL" Comment="Output event qualifier" />
+      <VarDeclaration Name="to_mgz" Type="BOOL" />
+      <VarDeclaration Name="to_next" Type="BOOL" />
+      <VarDeclaration Name="vcm_on" Type="BOOL" />
+      <VarDeclaration Name="vm_off" Type="BOOL" />
+    </OutputVars>
+  </InterfaceList>
+  <FBNetwork>
+    <FB ID="1" Name="IThis" Type="Test_HMI" x="920" y="620" Namespace="Main">
+      <Parameter Name="QI" Value="TRUE" />
+    </FB>
+    <Input Name="INIT" x="500" y="631.8542" Type="Event" />
+    <Output Name="INITO" x="1460" y="631.8542" Type="Event" />
+    <Output Name="CNF" x="1480" y="691.8542" Type="Event" />
+    <Output Name="Retract" x="1500" y="1011.854" Type="Data" />
+    <Output Name="to_mgz" x="1500" y="1071.854" Type="Data" />
+    <Output Name="to_next" x="1500" y="1131.854" Type="Data" />
+    <Output Name="vcm_on" x="1500" y="1191.854" Type="Data" />
+    <Output Name="vm_off" x="1500" y="1251.854" Type="Data" />
+    <EventConnections>
+      <Connection Source="INIT" Destination="IThis.INIT" dx1="40.83337" />
+      <Connection Source="IThis.INITO" Destination="INITO" dx1="50" />
+      <Connection Source="IThis.CNF" Destination="CNF" dx1="70" />
+    </EventConnections>
+    <DataConnections>
+      <Connection Source="IThis.retract" Destination="Retract" dx1="90" />
+      <Connection Source="IThis.to_mgz" Destination="to_mgz" dx1="110" />
+      <Connection Source="IThis.to_next" Destination="to_next" dx1="130" />
+      <Connection Source="IThis.vcm_on" Destination="vcm_on" dx1="150.5521" />
+      <Connection Source="IThis.vcm_off" Destination="vm_off" dx1="170" dx2="40" dy="-0.07299805" />
+    </DataConnections>
+  </FBNetwork>
+</FBType>

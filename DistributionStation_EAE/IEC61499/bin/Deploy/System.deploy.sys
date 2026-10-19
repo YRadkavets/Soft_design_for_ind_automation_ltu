@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE System SYSTEM "../LibraryElement.dtd">
+<System Name="System">
+  <Device ID="D166C33F-F415-406D-AF33-1F9D600E8C6B" Name="EcoRT_0" Type="Soft_dPAC" x="700" y="700.0002" Namespace="SE.DPAC">
+    <Resource ID="A915E0452356BD1" Name="RES0" Type="EMB_RES_ECO" x="800" y="800" Namespace="Runtime.Management">
+      <FBNetwork>
+        <FB ID="449F5213D11653A3" Name="TestPanel" Type="Test" x="1180" y="440" Namespace="Main" />
+        <FB ID="2296FA8D8232BF54" Name="DistributionStation" Type="Model" x="1960" y="440" Namespace="Main" />
+        <FB ID="42AD414C1D0D1405" Name="PanelButtons" Type="ButtonsPanel" x="2840" y="440" Namespace="Main" />
+        <FB ID="6A9EE45C8F9E2338" Name="FB4" Type="ButtonPanel_Control" x="2640" y="1380" Namespace="Main" />
+        <EventConnections>
+          <Connection Source="TestPanel.INITO" Destination="DistributionStation.INIT" />
+          <Connection Source="TestPanel.CNF" Destination="DistributionStation.REQ" />
+          <Connection Source="START.COLD" Destination="TestPanel.INIT" dx1="48.60425" />
+          <Connection Source="PanelButtons.CNF" Destination="FB4.REQ" dx1="140" dx2="30" dy="530" />
+          <Connection Source="DistributionStation.INITO" Destination="FB4.INIT" dx1="61.02075" />
+          <Connection Source="FB4.CNF" Destination="PanelButtons.REQ" dx1="50" dx2="100" dy="-300.1458" />
+          <Connection Source="FB4.INITO" Destination="PanelButtons.REQ" dx1="50" dx2="100" dy="-240.1458" />
+          <Connection Source="DistributionStation.INITO" Destination="PanelButtons.INIT" />
+          <Connection Source="FB4.RESET" Destination="FB4.INIT" dx1="90" dx2="180" dy="-348.2916" />
+          <Connection Source="DistributionStation.CNF" Destination="FB4.REQ" dx1="110.5105" />
+        </EventConnections>
+        <DataConnections>
+          <Connection Source="TestPanel.Retract" Destination="DistributionStation.retract" />
+          <Connection Source="TestPanel.to_mgz" Destination="DistributionStation.to_mgz" />
+          <Connection Source="TestPanel.to_next" Destination="DistributionStation.to_next" />
+          <Connection Source="TestPanel.vcm_on" Destination="DistributionStation.vcm_on" />
+          <Connection Source="TestPanel.vm_off" Destination="DistributionStation.vcm_off" />
+          <Connection Source="FB4.start_led" Destination="PanelButtons.start_led" dx1="78.5625" dx2="70" dy="-670" />
+          <Connection Source="FB4.reset_led" Destination="PanelButtons.reset_led" dx1="98.5625" dx2="50" dy="-730" />
+          <Connection Source="FB4.ack_led" Destination="PanelButtons.ack_led" dx1="118.5625" dx2="30" dy="-790" />
+          <Connection Source="PanelButtons.start" Destination="FB4.start" dx1="120" dx2="70" dy="330" />
+          <Connection Source="PanelButtons.reset" Destination="FB4.reset" dx1="100" dx2="90" dy="270" />
+          <Connection Source="PanelButtons.ack" Destination="FB4.ack" dx1="80" dx2="110" dy="210" />
+          <Connection Source="PanelButtons.manual" Destination="FB4.manual" dx1="60" dx2="130" dy="150" />
+          <Connection Source="PanelButtons.stop" Destination="FB4.stop" dx1="40" dx2="150" dy="90" />
+          <Connection Source="DistributionStation.empty" Destination="FB4.empty" dx1="41.02075" />
+        </DataConnections>
+      </FBNetwork>
+    </Resource>
+    <FBNetwork />
+  </Device>
+</System>

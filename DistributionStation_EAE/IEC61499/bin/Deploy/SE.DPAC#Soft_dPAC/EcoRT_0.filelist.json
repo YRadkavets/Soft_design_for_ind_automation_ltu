@@ -1,0 +1,33 @@
+{
+  "snapshot": {
+    "guid": "103817c6-cd68-42f3-b927-d8979762e150",
+    "hash": "5C56F8C215AE7F089478D12C2633DB760BA45583ABF2D21B831D40E29A65A00C",
+    "app": {
+      "hash": "5C56F8C215AE7F089478D12C2633DB760BA45583ABF2D21B831D40E29A65A00C",
+      "items": [
+        "Main#Test_HMI.bin",
+        "Main#Test.bin",
+        "Main#integEC.bin",
+        "Main#ChangeDetect.bin",
+        "Main#InRange.bin",
+        "Main#ArmControl.bin",
+        "Main#Bool2Real.bin",
+        "Main#Real2Bool.bin",
+        "Main#TransferUnit.bin",
+        "Main#BigDemux.bin",
+        "Main#PhysicsRulesWorkPieces.bin",
+        "Main#WorkPieces.bin",
+        "Main#Model_HMI.bin",
+        "Main#CylControl.bin",
+        "Main#Pusher.bin",
+        "Main#Model.bin",
+        "Main#ButtonsPanel_HMI.bin",
+        "Main#ButtonsPanel.bin",
+        "Main#Panel_button_cotrol.bin",
+        "Main#ManualAutomaticSwitch.bin",
+        "Main#ButtonPanel_Control.bin",
+        "Device.bin"
+      ]
+    }
+  }
+}

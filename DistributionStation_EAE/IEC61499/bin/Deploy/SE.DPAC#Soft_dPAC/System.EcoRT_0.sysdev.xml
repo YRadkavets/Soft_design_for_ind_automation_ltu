@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<System Name="System" ProjectName="DistributionStation_EAE" ProjectGuid="{6CABFB28-5AC2-4ED5-B23B-1C5638756E6E}" BuildTime="2026-10-19 23:07:44Z" DeployTime="" StudioVersion="IEC 61499 IDE, Panther UAOv23.0 g5173 4181ef5 Thu Oct 12 16:53:40 2023" SnapshotGuid="{103817C6-CD68-42F3-B927-D8979762E150}">
+  <Device ID="D166C33F-F415-406D-AF33-1F9D600E8C6B" Name="EcoRT_0" Type="Soft_dPAC" Namespace="SE.DPAC">
+    <Resource ID="A915E0452356BD1" Name="RES0" Type="EMB_RES_ECO" Namespace="Runtime.Management">
+      <FBNetwork>
+        <FB ID="449F5213D11653A3" Name="TestPanel" Type="Test" Namespace="Main" />
+        <FB ID="2296FA8D8232BF54" Name="DistributionStation" Type="Model" Namespace="Main" />
+        <FB ID="42AD414C1D0D1405" Name="PanelButtons" Type="ButtonsPanel" Namespace="Main" />
+        <FB ID="6A9EE45C8F9E2338" Name="FB4" Type="ButtonPanel_Control" Namespace="Main" />
+        <FB Name="START" Type="E_RESTART" Namespace="IEC61499.Standard" />
+        <EventConnections>
+          <Connection Source="TestPanel.INITO" Destination="DistributionStation.INIT" />
+          <Connection Source="TestPanel.CNF" Destination="DistributionStation.REQ" />
+          <Connection Source="START.COLD" Destination="TestPanel.INIT" />
+          <Connection Source="PanelButtons.CNF" Destination="FB4.REQ" />
+          <Connection Source="DistributionStation.INITO" Destination="FB4.INIT" />
+          <Connection Source="FB4.CNF" Destination="PanelButtons.REQ" />
+          <Connection Source="FB4.INITO" Destination="PanelButtons.REQ" />
+          <Connection Source="DistributionStation.INITO" Destination="PanelButtons.INIT" />
+          <Connection Source="FB4.RESET" Destination="FB4.INIT" />
+          <Connection Source="DistributionStation.CNF" Destination="FB4.REQ" />
+        </EventConnections>
+        <DataConnections>
+          <Connection Source="TestPanel.Retract" Destination="DistributionStation.retract" />
+          <Connection Source="TestPanel.to_mgz" Destination="DistributionStation.to_mgz" />
+          <Connection Source="TestPanel.to_next" Destination="DistributionStation.to_next" />
+          <Connection Source="TestPanel.vcm_on" Destination="DistributionStation.vcm_on" />
+          <Connection Source="TestPanel.vm_off" Destination="DistributionStation.vcm_off" />
+          <Connection Source="FB4.start_led" Destination="PanelButtons.start_led" />
+          <Connection Source="FB4.reset_led" Destination="PanelButtons.reset_led" />
+          <Connection Source="FB4.ack_led" Destination="PanelButtons.ack_led" />
+          <Connection Source="PanelButtons.start" Destination="FB4.start" />
+          <Connection Source="PanelButtons.reset" Destination="FB4.reset" />
+          <Connection Source="PanelButtons.ack" Destination="FB4.ack" />
+          <Connection Source="PanelButtons.manual" Destination="FB4.manual" />
+          <Connection Source="PanelButtons.stop" Destination="FB4.stop" />
+          <Connection Source="DistributionStation.empty" Destination="FB4.empty" />
+        </DataConnections>
+        <AdapterConnections />
+      </FBNetwork>
+    </Resource>
+    <FBNetwork />
+  </Device>
+</System>
