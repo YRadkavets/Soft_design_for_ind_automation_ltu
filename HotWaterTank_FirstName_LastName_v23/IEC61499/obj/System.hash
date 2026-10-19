@@ -10,7 +10,7 @@
         <Parameter Name="Outlet" Value="1" />
       </FB>
       <FB ID="2F1B04E0699A7844" Name="HMI_Blocks" Type="HMI_BLOCKS" x="1020" y="960" Namespace="Main" />
-      <FB ID="5A91CF5AC8472849" Name="Controller" Type="Controller" x="2080" y="840" Namespace="Main">
+      <FB ID="5A91CF5AC8472849" Name="Controller" Type="Controller" x="2080" y="860" Namespace="Main">
         <Parameter Name="InitialLevel" Value="100" />
         <Parameter Name="InitialTemperature" Value="60" />
         <Parameter Name="Offset" Value="75" />
@@ -42,19 +42,19 @@
         <Parameter Name="INFOVAL" Value="1.0" />
       </FB>
       <EventConnections>
-        <Connection Source="HMI_Blocks.Receipe1" Destination="Controller.Receipe1E">
+        <Connection Source="HMI_Blocks.Receipe1" Destination="Controller.Receipe1E" dx1="232.7916">
           <AvoidsNodes>false</AvoidsNodes>
         </Connection>
-        <Connection Source="HMI_Blocks.Receipe2" Destination="Controller.Receipe2E">
+        <Connection Source="HMI_Blocks.Receipe2" Destination="Controller.Receipe2E" dx1="232.7916">
           <AvoidsNodes>false</AvoidsNodes>
         </Connection>
-        <Connection Source="HMI_Blocks.Sliders" Destination="Controller.SlidersE">
+        <Connection Source="HMI_Blocks.Sliders" Destination="Controller.SlidersE" dx1="232.7916">
           <AvoidsNodes>false</AvoidsNodes>
         </Connection>
-        <Connection Source="HMI_Blocks.Start" Destination="Controller.Start">
+        <Connection Source="HMI_Blocks.Start" Destination="Controller.Start" dx1="232.7916">
           <AvoidsNodes>false</AvoidsNodes>
         </Connection>
-        <Connection Source="HMI_Blocks.Stop" Destination="Controller.StopE">
+        <Connection Source="HMI_Blocks.Stop" Destination="Controller.StopE" dx1="232.7916">
           <AvoidsNodes>false</AvoidsNodes>
         </Connection>
         <Connection Source="Trends.INITO" Destination="FB2.EI" />
@@ -64,30 +64,30 @@
         <Connection Source="FB2.EO2" Destination="HMI_Blocks.INIT" dx1="74.3125" dx2="30" dy="-880">
           <AvoidsNodes>false</AvoidsNodes>
         </Connection>
-        <Connection Source="Controller.CNF" Destination="HotWaterTankModel_APP2.REQ" />
+        <Connection Source="Controller.CNF" Destination="HotWaterTankModel_APP2.REQ" dx1="52.4165" />
         <Connection Source="HotWaterTankModel_APP2.CNF" Destination="Controller.REQ" dx1="46.20825" dx2="120" dy="-360">
           <AvoidsNodes>false</AvoidsNodes>
         </Connection>
-        <Connection Source="HotWaterTankModel_APP2.INITO" Destination="Trends.INIT" dx1="106.2083" />
-        <Connection Source="HotWaterTankModel_APP2.CNF" Destination="Trends.REQ" dx1="86.20825" />
-        <Connection Source="HotWaterTankModel_APP2.INITO" Destination="alarm.INIT" dx1="106.2083" />
-        <Connection Source="alarm.INITO" Destination="alarm.REQ_INITDATA" dx1="40" dx2="70" dy="-110" />
+        <Connection Source="HotWaterTankModel_APP2.INITO" Destination="Trends.INIT" dx1="126.2083" />
+        <Connection Source="HotWaterTankModel_APP2.CNF" Destination="Trends.REQ" dx1="106.2083" />
+        <Connection Source="HotWaterTankModel_APP2.INITO" Destination="alarm.INIT" dx1="146.2083" />
+        <Connection Source="alarm.INITO" Destination="alarm.REQ_INITDATA" dx1="60" dx2="70" dy="-110" />
         <Connection Source="alarm.CNF_INITDATA" Destination="alarm.ACTIVATE" dx1="40" dx2="90" dy="-260">
           <AvoidsNodes>false</AvoidsNodes>
         </Connection>
-        <Connection Source="HotWaterTankModel_APP2.CNF" Destination="alarm.REQ" dx1="106.2083" />
+        <Connection Source="HotWaterTankModel_APP2.CNF" Destination="alarm.REQ" dx1="126.2083" />
         <Connection Source="alarm.INITO" Destination="alarm1.INIT" dx1="60" dx2="50" dy="1070" />
-        <Connection Source="alarm1.INITO" Destination="alarm1.REQ_INITDATA" dx1="40" dx2="70" dy="-110" />
+        <Connection Source="alarm1.INITO" Destination="alarm1.REQ_INITDATA" dx1="60" dx2="70" dy="-110" />
         <Connection Source="alarm1.CNF_INITDATA" Destination="alarm1.ACTIVATE" dx1="40" dx2="90" dy="-170" />
-        <Connection Source="HotWaterTankModel_APP2.CNF" Destination="alarm1.REQ" dx1="106.2083" />
+        <Connection Source="HotWaterTankModel_APP2.CNF" Destination="alarm1.REQ" dx1="126.2083" />
       </EventConnections>
       <DataConnections>
-        <Connection Source="HMI_Blocks.Receipe1Button" Destination="Controller.Receipe1Button" />
-        <Connection Source="HMI_Blocks.Receipe2Button" Destination="Controller.Receipe2Button" />
-        <Connection Source="HMI_Blocks.TemperatureSlider" Destination="Controller.TemperatureSlider" />
-        <Connection Source="HMI_Blocks.WaterLevelSlider" Destination="Controller.WaterLevelSlider" />
-        <Connection Source="HMI_Blocks.StartButton" Destination="Controller.StartButton" />
-        <Connection Source="HMI_Blocks.StopButton" Destination="Controller.StopButton" />
+        <Connection Source="HMI_Blocks.Receipe1Button" Destination="Controller.Receipe1Button" dx1="120" />
+        <Connection Source="HMI_Blocks.Receipe2Button" Destination="Controller.Receipe2Button" dx1="100" />
+        <Connection Source="HMI_Blocks.TemperatureSlider" Destination="Controller.TemperatureSlider" dx1="80" />
+        <Connection Source="HMI_Blocks.WaterLevelSlider" Destination="Controller.WaterLevelSlider" dx1="60" />
+        <Connection Source="HMI_Blocks.StartButton" Destination="Controller.StartButton" dx1="140" />
+        <Connection Source="HMI_Blocks.StopButton" Destination="Controller.StopButton" dx1="40" />
         <Connection Source="Controller.Heat" Destination="HotWaterTankModel_APP2.Heat" dx1="242.417">
           <AvoidsNodes>false</AvoidsNodes>
         </Connection>
@@ -97,12 +97,8 @@
         <Connection Source="Controller.Inlet" Destination="HotWaterTankModel_APP2.InletSlow" dx1="182.417">
           <AvoidsNodes>false</AvoidsNodes>
         </Connection>
-        <Connection Source="HotWaterTankModel_APP2.WaterTemp" Destination="Controller.CurrentTemperature" dx1="16.20825" dx2="180" dy="640">
-          <AvoidsNodes>false</AvoidsNodes>
-        </Connection>
-        <Connection Source="HotWaterTankModel_APP2.WaterLevel" Destination="Controller.CurrentLevel" dx1="56.20825" dx2="220" dy="740">
-          <AvoidsNodes>false</AvoidsNodes>
-        </Connection>
+        <Connection Source="HotWaterTankModel_APP2.WaterTemp" Destination="Controller.CurrentTemperature" dx1="46.20825" dx2="330" dy="-790" />
+        <Connection Source="HotWaterTankModel_APP2.WaterLevel" Destination="Controller.CurrentLevel" dx1="66.20825" dx2="310" dy="-730" />
         <Connection Source="Controller.HeatPower" Destination="HotWaterTankModel_APP2.HeatPower" dx1="302.417">
           <AvoidsNodes>false</AvoidsNodes>
         </Connection>
@@ -112,7 +108,7 @@
         <Connection Source="HotWaterTankModel_APP2.WaterTemp" Destination="Trends.Water_Temp">
           <AvoidsNodes>false</AvoidsNodes>
         </Connection>
-        <Connection Source="HotWaterTankModel_APP2.MaxSensor" Destination="alarm.INP" dx1="86.20825" />
+        <Connection Source="HotWaterTankModel_APP2.MaxSensor" Destination="alarm.INP" dx1="106.2083" />
         <Connection Source="HotWaterTankModel_APP2.MaxTemp" Destination="alarm1.INP" dx1="86.20825" />
       </DataConnections>
     </SubAppNetwork>
