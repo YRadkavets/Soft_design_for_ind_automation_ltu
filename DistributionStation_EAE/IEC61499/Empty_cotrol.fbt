@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
+<FBType GUID="f1f01ab7-2371-40a3-b3ac-16a336b02602" Name="Empty_cotrol" Comment="Basic Function Block Type" Namespace="Main">
+  <Identification Standard="61499-2" />
+  <VersionInfo Organization="Schneider Electric" Version="0.0" Author="lizar" Date="10/19/2026" Remarks="Template" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="REQ" Comment="Normal Execution Request">
+        <With Var="empty" />
+      </Event>
+      <Event Name="EMPTY_TIMEOUT" />
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="EMPTY" />
+      <Event Name="START_EMPTY_TIMEOUT" />
+      <Event Name="STOP" />
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Name="empty" Type="BOOL" Comment="Input event qualifier" />
+    </InputVars>
+  </InterfaceList>
+  <BasicFB>
+    <Attribute Name="FBType.Basic.Algorithm.Order" Value="REQ" />
+    <ECC>
+      <ECState Name="START" Comment="Initial State" x="1422.941" y="529.4117" />
+      <ECState Name="EMPTY" Comment="Normal execution" x="322.647" y="1185.941">
+        <ECAction Algorithm="REQ" Output="EMPTY" />
+      </ECState>
+      <ECState Name="EMPTY_MB" x="1518" y="1508">
+        <ECAction Output="START_EMPTY_TIMEOUT" />
+      </ECState>
+      <ECState Name="STOP_TIMER" x="2650" y="1045">
+        <ECAction Output="STOP" />
+      </ECState>
+      <ECTransition Source="START" Destination="EMPTY_MB" Condition="REQ[empty]" x="1548.937" y="1011.455">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="388.9622,215.8334,396.0389,288.6854" />
+      </ECTransition>
+      <ECTransition Source="EMPTY_MB" Destination="EMPTY" Condition="EMPTY_TIMEOUT" x="800.4127" y="1389.04">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="233.5865,361.7296,154.4488,337.0982" />
+      </ECTransition>
+      <ECTransition Source="EMPTY_MB" Destination="STOP_TIMER" Condition="REQ[NOT empty]" x="1995.929" y="1301.503">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="455.8073,342.4406,529.1932,312.4779" />
+      </ECTransition>
+      <ECTransition Source="EMPTY" Destination="START" Condition="1" x="899.2218" y="812.6898">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="189.9327,222.3922,266.4713,176.4549" />
+      </ECTransition>
+      <ECTransition Source="STOP_TIMER" Destination="START" Condition="1" x="2020.093" y="863.4705">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="549.8959,238.9358,468.3393,204.6671" />
+      </ECTransition>
+    </ECC>
+    <Algorithm Name="REQ" Comment="Normally executed algorithm">
+      <ST><![CDATA[;]]></ST>
+    </Algorithm>
+  </BasicFB>
+</FBType>

@@ -8,6 +8,7 @@
         <FB ID="2296FA8D8232BF54" Name="DistributionStation" Type="Model" x="1960" y="440" Namespace="Main" />
         <FB ID="42AD414C1D0D1405" Name="PanelButtons" Type="ButtonsPanel" x="2840" y="440" Namespace="Main" />
         <FB ID="6A9EE45C8F9E2338" Name="FB4" Type="ButtonPanel_Control" x="2640" y="1380" Namespace="Main" />
+        <FB ID="2E904AF9986F104C" Name="FB1" Type="EmptyControl" x="1358.49" y="1082.146" Namespace="Main" />
         <FB Name="START" Type="E_RESTART" x="80" y="100" Namespace="IEC61499.Standard" />
         <EventConnections>
           <Connection Source="TestPanel.INITO" Destination="DistributionStation.INIT" />
@@ -20,6 +21,44 @@
           <Connection Source="DistributionStation.INITO" Destination="PanelButtons.INIT" />
           <Connection Source="FB4.RESET" Destination="FB4.INIT" dx1="90" dx2="180" dy="-348.2916" />
           <Connection Source="DistributionStation.CNF" Destination="FB4.REQ" dx1="110.5105" />
+          <Connection Source="DistributionStation.CNF" Destination="FB1.REQ">
+            <Points>
+              <Points>
+                <X>597.2448</X>
+                <Y>135</Y>
+              </Points>
+              <Points>
+                <X>607.5</X>
+                <Y>135</Y>
+              </Points>
+              <Points>
+                <X>607.5</X>
+                <Y>282.5</Y>
+              </Points>
+              <Points>
+                <X>477.5</X>
+                <Y>282.5</Y>
+              </Points>
+              <Points>
+                <X>477.5</X>
+                <Y>252.5</Y>
+              </Points>
+              <Points>
+                <X>322.5</X>
+                <Y>252.5</Y>
+              </Points>
+              <Points>
+                <X>322.5</X>
+                <Y>280.5365</Y>
+              </Points>
+              <Points>
+                <X>334.6225</X>
+                <Y>280.5365</Y>
+              </Points>
+            </Points>
+          </Connection>
+          <Connection Source="FB1.EMPTY" Destination="FB4.EMPTY" dx1="48.34338" />
+          <Connection Source="FB4.RESET" Destination="FB1.REQ" dx1="90" dx2="60" dy="-646.1457" />
         </EventConnections>
         <DataConnections>
           <Connection Source="TestPanel.Retract" Destination="DistributionStation.retract" />
@@ -35,7 +74,7 @@
           <Connection Source="PanelButtons.ack" Destination="FB4.ack" dx1="80" dx2="110" dy="210" />
           <Connection Source="PanelButtons.manual" Destination="FB4.manual" dx1="60" dx2="130" dy="150" />
           <Connection Source="PanelButtons.stop" Destination="FB4.stop" dx1="40" dx2="150" dy="90" />
-          <Connection Source="DistributionStation.empty" Destination="FB4.empty" dx1="41.02075" />
+          <Connection Source="DistributionStation.empty" Destination="FB1.empty" dx1="41.02075" dx2="68.48999" dy="370" />
         </DataConnections>
         <AdapterConnections />
       </FBNetwork>

@@ -68,7 +68,7 @@
       <IEC61499Type>CAT</IEC61499Type>
     </None>
     <None Include="Project.doc.xml" />
-    <None Include="SnapshotCompiles\{103817C6-CD68-42F3-B927-D8979762E150}\Default\IEC61499.snapshot" />
+    <None Include="SnapshotCompiles\{C931B75C-3F0D-4278-974D-4B8E6FDBEE8B}\Default\IEC61499.snapshot" />
     <None Include="System\snapshot.xml">
       <DependentUpon>System.sys</DependentUpon>
     </None>
@@ -93,6 +93,9 @@
       <IEC61499Type>Basic</IEC61499Type>
     </Compile>
     <Compile Include="ArmControl.fbt">
+      <IEC61499Type>Basic</IEC61499Type>
+    </Compile>
+    <Compile Include="Automatic_state_machine.fbt">
       <IEC61499Type>Basic</IEC61499Type>
     </Compile>
     <Compile Include="BigDemux.fbt">
@@ -122,6 +125,12 @@
       <IEC61499Type>Basic</IEC61499Type>
     </Compile>
     <Compile Include="Demux.fbt">
+      <IEC61499Type>Basic</IEC61499Type>
+    </Compile>
+    <Compile Include="EmptyControl.fbt">
+      <IEC61499Type>Composite</IEC61499Type>
+    </Compile>
+    <Compile Include="Empty_cotrol.fbt">
       <IEC61499Type>Basic</IEC61499Type>
     </Compile>
     <Compile Include="FeederControl.fbt">
@@ -192,8 +201,8 @@
     <Folder Include="License" />
     <Folder Include="Log" />
     <Folder Include="SnapshotCompiles" />
-    <Folder Include="SnapshotCompiles\{103817C6-CD68-42F3-B927-D8979762E150}" />
-    <Folder Include="SnapshotCompiles\{103817C6-CD68-42F3-B927-D8979762E150}\Default" />
+    <Folder Include="SnapshotCompiles\{C931B75C-3F0D-4278-974D-4B8E6FDBEE8B}" />
+    <Folder Include="SnapshotCompiles\{C931B75C-3F0D-4278-974D-4B8E6FDBEE8B}\Default" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model\Model_CAT.offline.xml">

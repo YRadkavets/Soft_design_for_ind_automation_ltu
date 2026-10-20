@@ -1,9 +1,9 @@
 {
   "snapshot": {
-    "guid": "103817c6-cd68-42f3-b927-d8979762e150",
-    "hash": "5C56F8C215AE7F089478D12C2633DB760BA45583ABF2D21B831D40E29A65A00C",
+    "guid": "c931b75c-3f0d-4278-974d-4b8e6fdbee8b",
+    "hash": "0191B5220B95BDFBB72D065F4F0E80EF1DF6A3DFDF49641020C6726B7048F11A",
     "app": {
-      "hash": "5C56F8C215AE7F089478D12C2633DB760BA45583ABF2D21B831D40E29A65A00C",
+      "hash": "0191B5220B95BDFBB72D065F4F0E80EF1DF6A3DFDF49641020C6726B7048F11A",
       "items": [
         "Main#Test_HMI.bin",
         "Main#Test.bin",
@@ -26,6 +26,8 @@
         "Main#Panel_button_cotrol.bin",
         "Main#ManualAutomaticSwitch.bin",
         "Main#ButtonPanel_Control.bin",
+        "Main#Empty_cotrol.bin",
+        "Main#EmptyControl.bin",
         "Device.bin"
       ]
     }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
+<FBType GUID="44156177-98d5-4863-9009-11596514f7a5" Name="EmptyControl" Comment="Extracted Composite Function Block Type" Namespace="Main">
+  <Attribute Name="Configuration.FB.IDCounter" Value="2" />
+  <Identification Standard="61499-2" />
+  <VersionInfo Author="lizar" Date="10/20/2026" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="REQ" Comment="Normal Execution Request">
+        <With Var="empty" />
+      </Event>
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="EMPTY" />
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Name="empty" Type="BOOL" />
+    </InputVars>
+  </InterfaceList>
+  <FBNetwork>
+    <FB ID="1" Name="FB8" Type="E_DELAY" x="1500" y="2000" Namespace="IEC61499.Standard">
+      <Parameter Name="DT" Value="T#1.5s" />
+    </FB>
+    <FB ID="2" Name="FB1" Type="Empty_cotrol" x="1160" y="1460" Namespace="Main" />
+    <Input Name="REQ" x="577.75" y="1472" Type="Event" />
+    <Input Name="empty" x="660" y="1792" Type="Data" />
+    <Output Name="EMPTY" x="2388.396" y="1472" Type="Event" />
+    <EventConnections>
+      <Connection Source="FB8.EO" Destination="FB1.EMPTY_TIMEOUT" dx1="48.5" dx2="580" dy="-110">
+        <AvoidsNodes>false</AvoidsNodes>
+      </Connection>
+      <Connection Source="FB1.START_EMPTY_TIMEOUT" Destination="FB8.START" dx1="61.604" dx2="50" dy="350" />
+      <Connection Source="FB1.STOP" Destination="FB8.STOP" dx1="41.604" dx2="70" dy="290" />
+      <Connection Source="REQ" Destination="FB1.REQ" />
+      <Connection Source="FB1.EMPTY" Destination="EMPTY" />
+    </EventConnections>
+    <DataConnections>
+      <Connection Source="empty" Destination="FB1.empty" />
+    </DataConnections>
+  </FBNetwork>
+</FBType>

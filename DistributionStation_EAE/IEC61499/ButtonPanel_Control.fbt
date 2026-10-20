@@ -10,13 +10,14 @@
         <With Var="ack" />
       </Event>
       <Event Name="REQ" Comment="Normal Execution Request">
-        <With Var="empty" />
         <With Var="start" />
         <With Var="reset" />
         <With Var="manual" />
         <With Var="stop" />
         <With Var="ack" />
       </Event>
+      <Event Name="READY" />
+      <Event Name="EMPTY" />
     </EventInputs>
     <EventOutputs>
       <Event Name="INITO">
@@ -43,7 +44,6 @@
       <VarDeclaration Name="ack" Type="BOOL" Comment="Event permission" />
       <VarDeclaration Name="manual" Type="BOOL" />
       <VarDeclaration Name="stop" Type="BOOL" />
-      <VarDeclaration Name="empty" Type="BOOL" Comment="Input event qualifier" />
     </InputVars>
     <OutputVars>
       <VarDeclaration Name="start_led" Type="BOOL" />
@@ -54,24 +54,22 @@
   <FBNetwork>
     <FB ID="1" Name="FB1" Type="Panel_button_cotrol" x="2440" y="2100" Namespace="Main" />
     <FB ID="2" Name="FB2" Type="E_CYCLE" x="2600" y="3260" Namespace="IEC61499.Standard">
-      <Parameter Name="DT" Value="T#0.5s" />
+      <Parameter Name="DT" Value="T#0.3s" />
     </FB>
     <FB ID="3" Name="FB3" Type="E_PERMIT" x="1520" y="1800" Namespace="IEC61499.Standard" />
     <FB ID="4" Name="FB4" Type="E_PERMIT" x="1520" y="1420" Namespace="IEC61499.Standard" />
     <FB ID="5" Name="FB5" Type="E_PERMIT" x="1500" y="1020" Namespace="IEC61499.Standard" />
     <FB ID="6" Name="FB6" Type="E_PERMIT" x="1520" y="600" Namespace="IEC61499.Standard" />
     <FB ID="7" Name="FB7" Type="ManualAutomaticSwitch" x="1600" y="80" Namespace="Main" />
-    <FB ID="9" Name="FB8" Type="E_DELAY" x="1360" y="2640" Namespace="IEC61499.Standard">
-      <Parameter Name="DT" Value="T#2s" />
-    </FB>
     <Input Name="INIT" x="2040" y="2112" Type="Event" />
     <Input Name="REQ" x="320" y="1152" Type="Event" />
     <Input Name="ack" x="720" y="2012" Type="Data" />
-    <Input Name="empty" x="1980" y="2672" Type="Data" />
     <Input Name="start" x="1040" y="1632" Type="Data" />
     <Input Name="reset" x="1040" y="812" Type="Data" />
     <Input Name="manual" x="1040" y="352" Type="Data" />
     <Input Name="stop" x="980" y="1252" Type="Data" />
+    <Input Name="READY" x="2000" y="2472" Type="Event" />
+    <Input Name="EMPTY" x="2000" y="2352" Type="Event" />
     <Output Name="CNF" x="3800" y="2172" Type="Event" />
     <Output Name="start_led" x="4060" y="2552" Type="Data" />
     <Output Name="reset_led" x="4060" y="2612" Type="Data" />
@@ -83,62 +81,10 @@
     <Output Name="MANUAL" x="2240" y="92" Type="Event" />
     <Output Name="AUTOMATIC" x="2240" y="152" Type="Event" />
     <EventConnections>
-      <Connection Source="FB1.START_TIMER" Destination="FB2.START">
-        <Points>
-          <Points>
-            <X>867.098938</X>
-            <Y>565</Y>
-          </Points>
-          <Points>
-            <X>794.130249</X>
-            <Y>565</Y>
-          </Points>
-          <Points>
-            <X>794.130249</X>
-            <Y>760</Y>
-          </Points>
-          <Points>
-            <X>632.5</X>
-            <Y>760</Y>
-          </Points>
-          <Points>
-            <X>632.5</X>
-            <Y>825</Y>
-          </Points>
-          <Points>
-            <X>645</X>
-            <Y>825</Y>
-          </Points>
-        </Points>
+      <Connection Source="FB1.START_TIMER" Destination="FB2.START" dx1="151.6042" dx2="69.99976" dy="778">
         <AvoidsNodes>false</AvoidsNodes>
       </Connection>
-      <Connection Source="FB1.STOP_TIMER" Destination="FB2.STOP">
-        <Points>
-          <Points>
-            <X>867.098938</X>
-            <Y>580</Y>
-          </Points>
-          <Points>
-            <X>789.130249</X>
-            <Y>580</Y>
-          </Points>
-          <Points>
-            <X>789.130249</X>
-            <Y>760</Y>
-          </Points>
-          <Points>
-            <X>627.5</X>
-            <Y>760</Y>
-          </Points>
-          <Points>
-            <X>627.5</X>
-            <Y>840</Y>
-          </Points>
-          <Points>
-            <X>645</X>
-            <Y>840</Y>
-          </Points>
-        </Points>
+      <Connection Source="FB1.STOP_TIMER" Destination="FB2.STOP" dx1="91.60425" dx2="89.99976" dy="718">
         <AvoidsNodes>false</AvoidsNodes>
       </Connection>
       <Connection Source="FB2.EO" Destination="FB1.BLINK" dx1="28.5" dx2="520" dy="-310">
@@ -159,39 +105,40 @@
       <Connection Source="REQ" Destination="FB7.REQ" dx1="49.54175" />
       <Connection Source="FB7.MANUAL" Destination="MANUAL" />
       <Connection Source="FB7.AUTOMATIC" Destination="AUTOMATIC" />
-      <Connection Source="FB1.START_EMPTY_TIMEOUT" Destination="FB8.START" dx1="101.6042" dx2="30" dy="650" />
-      <Connection Source="FB8.EO" Destination="FB1.EMPTY_TIMEOUT" dx1="48.5" />
+      <Connection Source="FB6.EO" Destination="FB1.RESET" dx1="47.16663" />
+      <Connection Source="READY" Destination="FB1.READY" />
+      <Connection Source="EMPTY" Destination="FB1.EMPTY" />
     </EventConnections>
     <DataConnections>
       <Connection Source="ack" Destination="FB3.PERMIT" />
-      <Connection Source="FB1.start_led" Destination="start_led" />
-      <Connection Source="FB1.reset_led" Destination="reset_led" />
-      <Connection Source="FB1.ack_led" Destination="ack_led" />
+      <Connection Source="FB1.start_led" Destination="start_led" dx1="150" />
+      <Connection Source="FB1.reset_led" Destination="reset_led" dx1="170" />
+      <Connection Source="FB1.ack_led" Destination="ack_led" dx1="190" />
       <Connection Source="FB1.ack_led" Destination="FB1.ack_led_i">
         <Points>
           <Points>
-            <X>867.098938</X>
+            <X>764.130249</X>
+            <Y>705</Y>
+          </Points>
+          <Points>
+            <X>661.1616</X>
+            <Y>705</Y>
+          </Points>
+          <Points>
+            <X>661.1616</X>
+            <Y>739</Y>
+          </Points>
+          <Points>
+            <X>482.031372</X>
+            <Y>739</Y>
+          </Points>
+          <Points>
+            <X>482.031372</X>
             <Y>675</Y>
-          </Points>
-          <Points>
-            <X>774.130249</X>
-            <Y>675</Y>
-          </Points>
-          <Points>
-            <X>774.130249</X>
-            <Y>725</Y>
-          </Points>
-          <Points>
-            <X>595</X>
-            <Y>725</Y>
-          </Points>
-          <Points>
-            <X>595</X>
-            <Y>690</Y>
           </Points>
           <Points>
             <X>605</X>
-            <Y>690</Y>
+            <Y>675</Y>
           </Points>
         </Points>
         <AvoidsNodes>false</AvoidsNodes>
@@ -200,7 +147,6 @@
       <Connection Source="stop" Destination="FB5.PERMIT" dx1="40" />
       <Connection Source="reset" Destination="FB6.PERMIT" />
       <Connection Source="manual" Destination="FB7.manual" />
-      <Connection Source="empty" Destination="FB1.empty" />
     </DataConnections>
   </FBNetwork>
 </FBType>
