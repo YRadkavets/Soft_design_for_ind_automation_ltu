@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
+<FBType GUID="95fdf2c1-b32e-431a-b868-39778e63d1d7" Name="STORAGE_Control" Comment="Extracted Composite Function Block Type" Namespace="Main">
+  <Attribute Name="Configuration.FB.IDCounter" Value="2" />
+  <Identification Standard="61499-2" />
+  <VersionInfo Author="lizar" Date="10/20/2026" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="INIT" Comment="Initialization Request">
+        <With Var="pos_e" />
+        <With Var="pos_r" />
+        <With Var="empty" />
+        <With Var="manual" />
+      </Event>
+      <Event Name="REQ" Comment="Normal Execution Request">
+        <With Var="pos_e" />
+        <With Var="pos_r" />
+        <With Var="empty" />
+        <With Var="manual" />
+        <With Var="stop_flag" />
+      </Event>
+      <Event Name="START" />
+      <Event Name="RESET" />
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="NOT_READY" />
+      <Event Name="READY" />
+      <Event Name="CNF" Comment="Execution Confirmation">
+        <With Var="retract" />
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Name="pos_e" Type="BOOL" Comment="Input event qualifier" />
+      <VarDeclaration Name="pos_r" Type="BOOL" />
+      <VarDeclaration Name="empty" Type="BOOL" />
+      <VarDeclaration Name="manual" Type="BOOL" />
+      <VarDeclaration Name="stop_flag" Type="BOOL" />
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Name="retract" Type="BOOL" Comment="Output event qualifier" />
+    </OutputVars>
+  </InterfaceList>
+  <FBNetwork>
+    <FB ID="1" Name="FB2" Type="Automatic_storage_sm" x="720" y="1480" Namespace="Main" />
+    <FB ID="2" Name="FB3" Type="E_DELAY" x="860" y="2240" Namespace="IEC61499.Standard">
+      <Parameter Name="DT" Value="T#200ms" />
+    </FB>
+    <Input Name="INIT" x="149.625" y="1492" Type="Event" />
+    <Input Name="REQ" x="137.75" y="1552" Type="Event" />
+    <Input Name="START" x="90.35416" y="1612" Type="Event" />
+    <Input Name="pos_e" x="-27.60419" y="1932" Type="Data" />
+    <Input Name="pos_r" x="-18.08337" y="1992" Type="Data" />
+    <Input Name="empty" x="-27.72919" y="2052" Type="Data" />
+    <Input Name="manual" x="40" y="2112" Type="Data" />
+    <Input Name="stop_flag" x="20" y="2172" Type="Data" />
+    <Input Name="RESET" x="160" y="1712" Type="Event" />
+    <Output Name="NOT_READY" x="1548.104" y="1732" Type="Event" />
+    <Output Name="READY" x="1548.104" y="1612" Type="Event" />
+    <Output Name="CNF" x="1548.104" y="1552" Type="Event" />
+    <Output Name="retract" x="1548.104" y="1932" Type="Data" />
+    <EventConnections>
+      <Connection Source="FB2.START_TIMER" Destination="FB3.START" dx1="41.89587" dx2="50" dy="930" />
+      <Connection Source="FB3.EO" Destination="FB2.TIMEOUT" dx1="48.5" dx2="30" dy="350" />
+      <Connection Source="INIT" Destination="FB2.INIT" />
+      <Connection Source="REQ" Destination="FB2.REQ" />
+      <Connection Source="START" Destination="FB2.START" />
+      <Connection Source="FB2.NOT_READY" Destination="NOT_READY" />
+      <Connection Source="FB2.READY" Destination="READY" />
+      <Connection Source="FB2.CNF" Destination="CNF" />
+      <Connection Source="RESET" Destination="FB2.RESET" dx1="40" />
+    </EventConnections>
+    <DataConnections>
+      <Connection Source="pos_e" Destination="FB2.pos_e" />
+      <Connection Source="pos_r" Destination="FB2.pos_r" />
+      <Connection Source="empty" Destination="FB2.empty" />
+      <Connection Source="FB2.retract" Destination="retract" />
+      <Connection Source="manual" Destination="FB2.manual" />
+      <Connection Source="stop_flag" Destination="FB2.stop_flag" />
+    </DataConnections>
+  </FBNetwork>
+</FBType>

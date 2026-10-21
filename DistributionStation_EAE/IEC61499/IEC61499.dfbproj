@@ -68,7 +68,7 @@
       <IEC61499Type>CAT</IEC61499Type>
     </None>
     <None Include="Project.doc.xml" />
-    <None Include="SnapshotCompiles\{C931B75C-3F0D-4278-974D-4B8E6FDBEE8B}\Default\IEC61499.snapshot" />
+    <None Include="SnapshotCompiles\{9840814F-D454-4B9A-89B0-40BA0F5877DB}\Default\IEC61499.snapshot" />
     <None Include="System\snapshot.xml">
       <DependentUpon>System.sys</DependentUpon>
     </None>
@@ -95,7 +95,10 @@
     <Compile Include="ArmControl.fbt">
       <IEC61499Type>Basic</IEC61499Type>
     </Compile>
-    <Compile Include="Automatic_state_machine.fbt">
+    <Compile Include="Automatic_storage_sm.fbt">
+      <IEC61499Type>Basic</IEC61499Type>
+    </Compile>
+    <Compile Include="Automtic_arm_sm.fbt">
       <IEC61499Type>Basic</IEC61499Type>
     </Compile>
     <Compile Include="BigDemux.fbt">
@@ -145,6 +148,9 @@
     <Compile Include="integEC.fbt">
       <IEC61499Type>Basic</IEC61499Type>
     </Compile>
+    <Compile Include="manual.fbt">
+      <IEC61499Type>Basic</IEC61499Type>
+    </Compile>
     <Compile Include="ManualAutomaticSwitch.fbt">
       <IEC61499Type>Basic</IEC61499Type>
     </Compile>
@@ -174,6 +180,12 @@
     <Compile Include="Real2Int.fbt">
       <IEC61499Type>Basic</IEC61499Type>
     </Compile>
+    <Compile Include="stop.fbt">
+      <IEC61499Type>Basic</IEC61499Type>
+    </Compile>
+    <Compile Include="STORAGE_Control.fbt">
+      <IEC61499Type>Composite</IEC61499Type>
+    </Compile>
     <Compile Include="System\System.sys">
       <IEC61499Type>System</IEC61499Type>
     </Compile>
@@ -201,8 +213,8 @@
     <Folder Include="License" />
     <Folder Include="Log" />
     <Folder Include="SnapshotCompiles" />
-    <Folder Include="SnapshotCompiles\{C931B75C-3F0D-4278-974D-4B8E6FDBEE8B}" />
-    <Folder Include="SnapshotCompiles\{C931B75C-3F0D-4278-974D-4B8E6FDBEE8B}\Default" />
+    <Folder Include="SnapshotCompiles\{9840814F-D454-4B9A-89B0-40BA0F5877DB}" />
+    <Folder Include="SnapshotCompiles\{9840814F-D454-4B9A-89B0-40BA0F5877DB}\Default" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model\Model_CAT.offline.xml">

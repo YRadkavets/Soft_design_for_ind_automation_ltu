@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
+<FBType GUID="edf691a8-b0f3-422c-a5ab-17f631957ce7" Name="manual" Comment="Basic Function Block Type" Namespace="Main">
+  <Identification Standard="61499-2" />
+  <VersionInfo Organization="Schneider Electric" Version="0.0" Author="lizar" Date="10/21/2026" Remarks="Template" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="REQ" Comment="Initialization Request">
+        <With Var="manual" />
+        <With Var="retract_m" />
+        <With Var="to_mgz_m" />
+        <With Var="to_next_m" />
+        <With Var="vcm_on_m" />
+        <With Var="vcm_off_m" />
+        <With Var="retract_a" />
+        <With Var="to_mgz_a" />
+        <With Var="to_next_a" />
+        <With Var="vcm_on_a" />
+        <With Var="vcm_off_a" />
+      </Event>
+      <Event Name="STOP">
+        <With Var="manual" />
+        <With Var="retract_m" />
+        <With Var="to_mgz_m" />
+        <With Var="to_next_m" />
+        <With Var="vcm_on_m" />
+        <With Var="vcm_off_m" />
+        <With Var="retract_a" />
+        <With Var="to_mgz_a" />
+        <With Var="to_next_a" />
+        <With Var="vcm_on_a" />
+        <With Var="vcm_off_a" />
+      </Event>
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="CNF" Comment="Execution Confirmation">
+        <With Var="retract" />
+        <With Var="to_mgz" />
+        <With Var="to_next" />
+        <With Var="vcm_on" />
+        <With Var="vcm_off" />
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Name="manual" Type="BOOL" />
+      <VarDeclaration Name="retract_m" Type="BOOL" />
+      <VarDeclaration Name="to_mgz_m" Type="BOOL" />
+      <VarDeclaration Name="to_next_m" Type="BOOL" />
+      <VarDeclaration Name="vcm_on_m" Type="BOOL" />
+      <VarDeclaration Name="vcm_off_m" Type="BOOL" />
+      <VarDeclaration Name="retract_a" Type="BOOL" />
+      <VarDeclaration Name="to_mgz_a" Type="BOOL" />
+      <VarDeclaration Name="to_next_a" Type="BOOL" />
+      <VarDeclaration Name="vcm_on_a" Type="BOOL" />
+      <VarDeclaration Name="vcm_off_a" Type="BOOL" />
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Name="retract" Type="BOOL" Comment="Output event qualifier" />
+      <VarDeclaration Name="to_mgz" Type="BOOL" />
+      <VarDeclaration Name="to_next" Type="BOOL" />
+      <VarDeclaration Name="vcm_on" Type="BOOL" />
+      <VarDeclaration Name="vcm_off" Type="BOOL" />
+    </OutputVars>
+  </InterfaceList>
+  <BasicFB>
+    <Attribute Name="FBType.Basic.Algorithm.Order" Value="manual,auto" />
+    <ECC>
+      <ECState Name="START" Comment="Initial State" x="1012.941" y="822.7451" />
+      <ECState Name="AUTOMATIC" Comment="Initialization" x="1383.529" y="534.5096">
+        <ECAction Algorithm="auto" Output="CNF" />
+      </ECState>
+      <ECState Name="MANUAL" Comment="Normal execution" x="677.647" y="1146.275">
+        <ECAction Algorithm="manual" Output="CNF" />
+      </ECState>
+      <ECTransition Source="START" Destination="AUTOMATIC" Condition="REQ[NOT manual]" x="1055.563" y="606.7087">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="255.641,154.1389,264.729,140.1405" />
+      </ECTransition>
+      <ECTransition Source="AUTOMATIC" Destination="START" Condition="STOP" x="1257.592" y="741.6564">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="324.7576,181.7294,305.0571,197.0519" />
+      </ECTransition>
+      <ECTransition Source="START" Destination="MANUAL" Condition="REQ[manual]" x="935.6725" y="1032.224">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="243.6523,252.9316,227.4165,270.3334" />
+      </ECTransition>
+      <ECTransition Source="MANUAL" Destination="START" Condition="1" x="832.8767" y="906.1322" />
+      <ECTransition Source="AUTOMATIC" Destination="AUTOMATIC" Condition="REQ[NOT manual]" x="1390.198" y="262.9978">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="380.5302,47.47197,315.4666,47.47197" />
+      </ECTransition>
+    </ECC>
+    <Algorithm Name="manual" Comment="Initialization algorithm">
+      <ST><![CDATA[;
+retract:=retract_m;
+to_mgz:=to_mgz_m;
+to_next:=to_next_m;
+vcm_on:=vcm_on_m;
+vcm_off:=vcm_off_m;]]></ST>
+    </Algorithm>
+    <Algorithm Name="auto">
+      <ST><![CDATA[;
+retract:=retract_a;
+to_mgz:=to_mgz_a;
+to_next:=to_next_a;
+vcm_on:=vcm_on_a;
+vcm_off:=vcm_off_a;]]></ST>
+    </Algorithm>
+  </BasicFB>
+</FBType>

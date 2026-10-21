@@ -1,9 +1,9 @@
 {
   "snapshot": {
-    "guid": "c931b75c-3f0d-4278-974d-4b8e6fdbee8b",
-    "hash": "0191B5220B95BDFBB72D065F4F0E80EF1DF6A3DFDF49641020C6726B7048F11A",
+    "guid": "9840814f-d454-4b9a-89b0-40ba0f5877db",
+    "hash": "F48FC734FC0255E2728C8ED7DA17145E4A266A0C67EC0B2108C60D62C9489DE6",
     "app": {
-      "hash": "0191B5220B95BDFBB72D065F4F0E80EF1DF6A3DFDF49641020C6726B7048F11A",
+      "hash": "F48FC734FC0255E2728C8ED7DA17145E4A266A0C67EC0B2108C60D62C9489DE6",
       "items": [
         "Main#Test_HMI.bin",
         "Main#Test.bin",
@@ -28,6 +28,11 @@
         "Main#ButtonPanel_Control.bin",
         "Main#Empty_cotrol.bin",
         "Main#EmptyControl.bin",
+        "Main#Automatic_storage_sm.bin",
+        "Main#STORAGE_Control.bin",
+        "Main#Automtic_arm_sm.bin",
+        "Main#stop.bin",
+        "Main#manual.bin",
         "Device.bin"
       ]
     }

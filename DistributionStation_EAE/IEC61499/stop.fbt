@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
+<FBType GUID="04301fa9-fdda-4181-92b4-632eb476fa24" Name="stop" Comment="Basic Function Block Type" Namespace="Main">
+  <Identification Standard="61499-2" />
+  <VersionInfo Organization="Schneider Electric" Version="0.0" Author="lizar" Date="10/21/2026" Remarks="Template" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="START" Comment="Initialization Request" />
+      <Event Name="STOP" Comment="Normal Execution Request" />
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="CNF" Comment="Execution Confirmation">
+        <With Var="stop_flag" />
+      </Event>
+    </EventOutputs>
+    <OutputVars>
+      <VarDeclaration Name="stop_flag" Type="BOOL" Comment="Output event qualifier" />
+    </OutputVars>
+  </InterfaceList>
+  <BasicFB>
+    <Attribute Name="FBType.Basic.Algorithm.Order" Value="stop,start" />
+    <ECC>
+      <ECState Name="START" Comment="Initial State" x="552.9412" y="429.4117" />
+      <ECState Name="NOT_STOP" Comment="Initialization" x="923.5294" y="141.1765">
+        <ECAction Algorithm="start" Output="CNF" />
+      </ECState>
+      <ECState Name="STOP" Comment="Normal execution" x="217.647" y="752.9412">
+        <ECAction Algorithm="stop" Output="CNF" />
+      </ECState>
+      <ECTransition Source="START" Destination="NOT_STOP" Condition="START" x="710.7591" y="194.815">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="172.0208,49.17552,191.7213,33.85297" />
+      </ECTransition>
+      <ECTransition Source="NOT_STOP" Destination="START" Condition="1" x="797.5924" y="348.3232" />
+      <ECTransition Source="START" Destination="STOP" Condition="STOP" x="449.701" y="647.84">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="123.1467,156.6527,104.2188,174.9165" />
+      </ECTransition>
+      <ECTransition Source="STOP" Destination="START" Condition="1" x="372.8767" y="512.7991" />
+    </ECC>
+    <Algorithm Name="stop" Comment="Initialization algorithm">
+      <ST><![CDATA[;
+stop_flag:=TRUE;]]></ST>
+    </Algorithm>
+    <Algorithm Name="start">
+      <ST><![CDATA[;
+stop_flag:=FALSE;]]></ST>
+    </Algorithm>
+  </BasicFB>
+</FBType>

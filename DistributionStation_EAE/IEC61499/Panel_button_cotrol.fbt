@@ -14,6 +14,7 @@
       <Event Name="EMPTY" />
       <Event Name="RESET" />
       <Event Name="READY" />
+      <Event Name="NOT_READY" />
     </EventInputs>
     <EventOutputs>
       <Event Name="INITO" Comment="Initialization Confirm">
@@ -37,7 +38,7 @@
     </OutputVars>
   </InterfaceList>
   <BasicFB>
-    <Attribute Name="FBType.Basic.Algorithm.Order" Value="INIT,REQ,BLINK,TURN_OFF,START_TURN_ON" />
+    <Attribute Name="FBType.Basic.Algorithm.Order" Value="INIT,REQ,BLINK,TURN_OFF,START_TURN_ON,START_TURN_OFF" />
     <ECC>
       <ECState Name="START" Comment="Initial State" x="552.9412" y="429.4117" />
       <ECState Name="INIT" Comment="Initialization" x="923.5294" y="141.1765">
@@ -56,12 +57,15 @@
       <ECState Name="READY" x="2016" y="526.7142">
         <ECAction Algorithm="START_TURN_ON" Output="CNF" />
       </ECState>
+      <ECState Name="NOT_READY" x="2171.429" y="840">
+        <ECAction Algorithm="START_TURN_OFF" Output="CNF" />
+      </ECState>
       <ECTransition Source="START" Destination="INIT" Condition="INIT" x="731.1476" y="204.8375" />
       <ECTransition Source="INIT" Destination="START" Condition="1" x="797.5924" y="348.3232" />
-      <ECTransition Source="EMPTY" Destination="BLINK" Condition="BLINK" x="270.5611" y="2065.983">
+      <ECTransition Source="EMPTY" Destination="BLINK" Condition="BLINK" x="270.3202" y="2065.982">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="68.41451,501.041,74.04104,529.4246" />
       </ECTransition>
-      <ECTransition Source="BLINK" Destination="EMPTY" Condition="1" x="138.6564" y="2108.971">
+      <ECTransition Source="BLINK" Destination="EMPTY" Condition="1" x="138.3844" y="2108.97">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="34.10556,543.6589,28.64515,515.4653" />
       </ECTransition>
       <ECTransition Source="EMPTY" Destination="ACKNOWLEDGED" Condition="ACK" x="1325.27" y="1948.724">
@@ -78,6 +82,12 @@
       </ECTransition>
       <ECTransition Source="START" Destination="EMPTY" Condition="EMPTY" x="430.3007" y="1155.402">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="128.1501,236.0707,97.64453,345.0011" />
+      </ECTransition>
+      <ECTransition Source="START" Destination="NOT_READY" Condition="NOT_READY" x="1353.092" y="549.5429">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="283.7517,118.4765,390.7685,145.6253" />
+      </ECTransition>
+      <ECTransition Source="NOT_READY" Destination="START" Condition="1" x="1323.336" y="706.5984">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="384.6211,194.8576,277.6043,167.7089" />
       </ECTransition>
     </ECC>
     <Algorithm Name="INIT" Comment="Initialization algorithm">
@@ -98,6 +108,11 @@ ack_led:=FALSE;]]></ST>
     <Algorithm Name="START_TURN_ON">
       <ST><![CDATA[;
 start_led:=TRUE;]]></ST>
+    </Algorithm>
+    <Algorithm Name="START_TURN_OFF">
+      <ST><![CDATA[;
+
+start_led:=FALSE;]]></ST>
     </Algorithm>
   </BasicFB>
 </FBType>
