@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
-<FBType GUID="534bbb6a-a754-4e76-98c8-ab932c63f1b5" Name="Automtic_arm_sm" Comment="Basic Function Block Type" Namespace="Main">
+<FBType GUID="534bbb6a-a754-4e76-98c8-ab932c63f1b5" Name="ARM_Control" Comment="Basic Function Block Type" Namespace="Main">
   <Identification Standard="61499-2" />
   <VersionInfo Organization="Schneider Electric" Version="0.0" Author="lizar" Date="10/20/2026" Remarks="Template" />
   <InterfaceList>
@@ -77,52 +77,49 @@
         <ECAction Output="NOT_READY" />
         <ECAction Output="CNF" />
       </ECState>
-      <ECState Name="STOP" x="305" y="400">
+      <ECState Name="STOP" x="165" y="620">
         <ECAction Algorithm="stop" Output="CNF" />
       </ECState>
       <ECState Name="RESET" x="860" y="180">
         <ECAction Algorithm="INIT" Output="CNF" />
       </ECState>
       <ECTransition Source="START" Destination="INIT" Condition="INIT" x="1397.814" y="258.1708" />
-      <ECTransition Source="INIT" Destination="START" Condition="1" x="1464.259" y="401.6565" />
-      <ECTransition Source="START" Destination="INITIAL" Condition="REQ[at_mgz AND NOT manual]" x="2027.6" y="408.0283">
+      <ECTransition Source="INIT" Destination="START" Condition="1" x="1464.259" y="401.6564" />
+      <ECTransition Source="START" Destination="INITIAL" Condition="REQ[at_mgz AND NOT manual]" x="2027.6" y="407.9362">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="450.2911,99.15909,558.3898,97.07912" />
       </ECTransition>
-      <ECTransition Source="INITIAL" Destination="PICK_UP" Condition="START[NOT manual]" x="2881.748" y="690.969">
+      <ECTransition Source="INITIAL" Destination="PICK_UP" Condition="START[NOT manual]" x="2881.663" y="690.9691">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="729.4304,138.2569,720.0014,190.0558" />
       </ECTransition>
-      <ECTransition Source="PICKED_UP" Destination="PUT_DOWN" Condition="REQ[at_next]" x="1782.804" y="1834.622">
+      <ECTransition Source="PICKED_UP" Destination="PUT_DOWN" Condition="REQ[at_next]" x="1782.867" y="1834.622">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="479.5196,474.9561,405.8038,471.28" />
       </ECTransition>
-      <ECTransition Source="TO_STORAGE" Destination="PICK_UP" Condition="REQ[at_mgz AND NOT manual AND NOT stop_flag]" x="2089.102" y="1035.407">
+      <ECTransition Source="TO_STORAGE" Destination="PICK_UP" Condition="REQ[at_mgz AND NOT manual AND NOT stop_flag]" x="2089.102" y="1035.408">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="480.9994,253.1034,600.131,263.6147" />
       </ECTransition>
-      <ECTransition Source="PICK_UP" Destination="PICKED_UP" Condition="REQ[v_mon]" x="2621.122" y="1433.696">
+      <ECTransition Source="PICK_UP" Destination="PICKED_UP" Condition="REQ[v_mon]" x="2621.062" y="1433.697">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="667.0002,347.0047,644.683,379.904" />
       </ECTransition>
-      <ECTransition Source="PUT_DOWN" Destination="TO_STORAGE" Condition="REQ[NOT v_mon AND NOT stop_flag]" x="985.5892" y="1429.099">
+      <ECTransition Source="PUT_DOWN" Destination="TO_STORAGE" Condition="REQ[NOT v_mon AND NOT stop_flag]" x="985.5876" y="1429.328">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="250.1679,390.4684,242.0727,345.6172" />
       </ECTransition>
-      <ECTransition Source="TO_STORAGE" Destination="START" Condition="REQ[at_mgz AND manual AND NOT stop_flag]" x="1075.321" y="657.4836">
-        <Attribute Name="Configuration.Transaction.BezierPoints" Value="261.086,174.5839,279.3716,141.6579" />
-      </ECTransition>
-      <ECTransition Source="INITIAL" Destination="NOT_READY" Condition="REQ[manual]" x="2286.533" y="686.0183">
+      <ECTransition Source="INITIAL" Destination="NOT_READY" Condition="REQ[manual]" x="2286.748" y="686.1916">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="587.4702,170.3005,543.5044,181.4318" />
       </ECTransition>
-      <ECTransition Source="NOT_READY" Destination="START" Condition="1" x="1654.066" y="732.2235">
+      <ECTransition Source="NOT_READY" Destination="START" Condition="1" x="1667.032" y="738.7463">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="446.8039,198.8334,410.0836,183.5313" />
       </ECTransition>
-      <ECTransition Source="PUT_DOWN" Destination="STOP" Condition="REQ[stop_flag]" x="208.2004" y="1550.099">
-        <Attribute Name="Configuration.Transaction.BezierPoints" Value="48.8974,474.6694,-21.22835,383.3664" />
+      <ECTransition Source="PUT_DOWN" Destination="STOP" Condition="REQ[stop_flag]" x="301.734" y="1744.087">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="89.81723,520.398,3.808083,448.6294" />
       </ECTransition>
-      <ECTransition Source="TO_STORAGE" Destination="STOP" Condition="REQ[at_mgz AND stop_flag]" x="614.9146" y="766.1111">
-        <Attribute Name="Configuration.Transaction.BezierPoints" Value="177.6944,217.6885,134.1112,177.8671" />
+      <ECTransition Source="TO_STORAGE" Destination="STOP" Condition="REQ[at_mgz AND stop_flag]" x="506.0892" y="870.9832">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="150.94,233.8787,107.6802,211.5694" />
       </ECTransition>
-      <ECTransition Source="RESET" Destination="START" Condition="1" x="1124.864" y="297.264">
+      <ECTransition Source="RESET" Destination="START" Condition="1" x="1126.767" y="295.8026">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="276.0751,63.06794,292.2469,80.02641" />
       </ECTransition>
-      <ECTransition Source="STOP" Destination="RESET" Condition="RESET" x="567.6471" y="210.3961">
-        <Attribute Name="Configuration.Transaction.BezierPoints" Value="130.6918,53.41946,156.4826,43.19608" />
+      <ECTransition Source="STOP" Destination="RESET" Condition="RESET" x="503.5541" y="326.614">
+        <Attribute Name="Configuration.Transaction.BezierPoints" Value="110.2653,87.44247,146.4478,64.81388" />
       </ECTransition>
     </ECC>
     <Algorithm Name="INIT" Comment="Initialization algorithm">

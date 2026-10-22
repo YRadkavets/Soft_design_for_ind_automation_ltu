@@ -1,0 +1,43 @@
+@startuml Magazine Unit 
+hide empty description
+
+
+[*] --> SETUP: INIT
+
+State "<b>SETUP</b>\n<i>Retract cylinder </i>" as SETUP
+State "<b>INITIAL</b>\n<i>Cylynder retracted</i>" as INITIAL
+State "<b>AUTOMATIC</b>\n<i>Working cycle</i>" as AUTO
+State "<b>STOP</b>\n<i>Stop at stable point</i>" as STOP
+State "<b>RESET</b>\n<i>Move to initial state</i>" as RESET
+
+SETUP-->INITIAL: cylinder sensor 
+INITIAL-->AUTO: button START
+AUTO-->STOP: button STOP or EMPTY
+STOP-->RESET: button RESET
+RESET --> INITIAL:cylinder sensor 
+
+
+
+state INITIAL{
+    INITIAL:<b>READY</b> 
+
+}
+
+state AUTO{
+    State "<b>EXTEND</b>" as E
+    State "<b>EXTENDED</b>\n<i>Stable state</i>" as ED
+    State "<b>RETRACT</b>" as R
+    State "<b>RETRACKTED</b>\n<i>Stable state</i>" as RD
+    
+    E-->ED: Cylinder sensor 
+    ED --> R
+    R-->RD: Cylinder sensor
+    RD --> E: NOT empty
+    
+
+}  
+
+
+
+
+@enduml

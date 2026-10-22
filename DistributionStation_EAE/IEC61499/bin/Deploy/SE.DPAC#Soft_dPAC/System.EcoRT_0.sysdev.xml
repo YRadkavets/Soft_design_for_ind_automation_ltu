@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<System Name="System" ProjectName="DistributionStation_EAE" ProjectGuid="{6CABFB28-5AC2-4ED5-B23B-1C5638756E6E}" BuildTime="2026-10-21 16:40:40Z" DeployTime="" StudioVersion="IEC 61499 IDE, Panther UAOv23.0 g5173 4181ef5 Thu Oct 12 16:53:40 2023" SnapshotGuid="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
+<System Name="System" ProjectName="DistributionStation_EAE" ProjectGuid="{6CABFB28-5AC2-4ED5-B23B-1C5638756E6E}" BuildTime="2026-10-22 18:14:11Z" DeployTime="" StudioVersion="IEC 61499 IDE, Panther UAOv23.0 g5173 4181ef5 Thu Oct 12 16:53:40 2023" SnapshotGuid="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
   <Device ID="D166C33F-F415-406D-AF33-1F9D600E8C6B" Name="EcoRT_0" Type="Soft_dPAC" Namespace="SE.DPAC">
     <Resource ID="A915E0452356BD1" Name="RES0" Type="EMB_RES_ECO" Namespace="Runtime.Management">
       <FBNetwork>
@@ -7,9 +7,8 @@
         <FB ID="2296FA8D8232BF54" Name="DistributionStation" Type="Model" Namespace="Main" />
         <FB ID="42AD414C1D0D1405" Name="PanelButtons" Type="ButtonsPanel" Namespace="Main" />
         <FB ID="6A9EE45C8F9E2338" Name="FB4" Type="ButtonPanel_Control" Namespace="Main" />
-        <FB ID="2E904AF9986F104C" Name="FB1" Type="EmptyControl" Namespace="Main" />
         <FB ID="69E57BDDC7811FDC" Name="FB2" Type="STORAGE_Control" Namespace="Main" />
-        <FB ID="7143E68796ED9160" Name="FB3" Type="Automtic_arm_sm" Namespace="Main" />
+        <FB ID="7143E68796ED9160" Name="FB3" Type="ARM_Control" Namespace="Main" />
         <FB ID="840DF3D0932BAB1B" Name="FB5" Type="E_REND" Namespace="IEC61499.Standard" />
         <FB ID="AD8ABFDA8F1B8194" Name="FB6" Type="stop" Namespace="Main" />
         <FB ID="C24B7327A7F99125" Name="FB7" Type="manual" Namespace="Main" />
@@ -23,8 +22,6 @@
           <Connection Source="FB4.INITO" Destination="PanelButtons.REQ" />
           <Connection Source="DistributionStation.INITO" Destination="PanelButtons.INIT" />
           <Connection Source="DistributionStation.CNF" Destination="FB4.REQ" />
-          <Connection Source="DistributionStation.CNF" Destination="FB1.REQ" />
-          <Connection Source="FB1.EMPTY" Destination="FB4.EMPTY" />
           <Connection Source="DistributionStation.CNF" Destination="FB2.REQ" />
           <Connection Source="FB4.START" Destination="FB2.START" />
           <Connection Source="DistributionStation.INITO" Destination="FB2.INIT" />
@@ -45,7 +42,6 @@
           <Connection Source="FB4.STOP" Destination="FB6.STOP" />
           <Connection Source="FB6.CNF" Destination="FB3.REQ" />
           <Connection Source="FB6.CNF" Destination="FB2.REQ" />
-          <Connection Source="FB4.RESET" Destination="FB1.REQ" />
           <Connection Source="FB4.RESET" Destination="FB4.INIT" />
           <Connection Source="FB4.RESET" Destination="FB3.RESET" />
           <Connection Source="FB4.RESET" Destination="FB2.RESET" />
@@ -64,7 +60,6 @@
           <Connection Source="PanelButtons.reset" Destination="FB4.reset" />
           <Connection Source="PanelButtons.ack" Destination="FB4.ack" />
           <Connection Source="PanelButtons.stop" Destination="FB4.stop" />
-          <Connection Source="DistributionStation.empty" Destination="FB1.empty" />
           <Connection Source="DistributionStation.pos_e" Destination="FB2.pos_e" />
           <Connection Source="DistributionStation.pos_r" Destination="FB2.pos_r" />
           <Connection Source="DistributionStation.empty" Destination="FB2.empty" />
@@ -91,6 +86,7 @@
           <Connection Source="FB7.to_next" Destination="DistributionStation.to_next" />
           <Connection Source="FB7.vcm_on" Destination="DistributionStation.vcm_on" />
           <Connection Source="FB7.vcm_off" Destination="DistributionStation.vcm_off" />
+          <Connection Source="DistributionStation.empty" Destination="FB4.empty" />
         </DataConnections>
         <AdapterConnections />
       </FBNetwork>

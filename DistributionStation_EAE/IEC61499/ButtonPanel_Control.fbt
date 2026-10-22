@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
 <FBType GUID="abdb566a-e4e6-4897-ae6c-598bb93ee7f0" Name="ButtonPanel_Control" Comment="Extracted Composite Function Block Type" Namespace="Main">
-  <Attribute Name="Configuration.FB.IDCounter" Value="9" />
+  <Attribute Name="Configuration.FB.IDCounter" Value="11" />
   <Identification Standard="61499-2" />
   <VersionInfo Author="lizar" Date="10/19/2026" />
   <InterfaceList>
@@ -14,10 +14,10 @@
         <With Var="reset" />
         <With Var="stop" />
         <With Var="ack" />
+        <With Var="empty" />
       </Event>
       <Event Name="READY" />
       <Event Name="NOT_READY" />
-      <Event Name="EMPTY" />
     </EventInputs>
     <EventOutputs>
       <Event Name="INITO">
@@ -41,6 +41,7 @@
       <VarDeclaration Name="reset" Type="BOOL" />
       <VarDeclaration Name="ack" Type="BOOL" Comment="Event permission" />
       <VarDeclaration Name="stop" Type="BOOL" />
+      <VarDeclaration Name="empty" Type="BOOL" />
     </InputVars>
     <OutputVars>
       <VarDeclaration Name="start_led" Type="BOOL" />
@@ -57,7 +58,7 @@
     <FB ID="4" Name="FB4" Type="E_PERMIT" x="1520" y="1420" Namespace="IEC61499.Standard" />
     <FB ID="5" Name="FB5" Type="E_PERMIT" x="1500" y="1020" Namespace="IEC61499.Standard" />
     <FB ID="6" Name="FB6" Type="E_PERMIT" x="1520" y="600" Namespace="IEC61499.Standard" />
-    <FB ID="7" Name="FB7" Type="ManualAutomaticSwitch" x="1600" y="80" Namespace="Main" />
+    <FB ID="10" Name="FB8" Type="EmptyControl" x="1480" y="80" Namespace="Main" />
     <Input Name="INIT" x="2040" y="2112" Type="Event" />
     <Input Name="REQ" x="320" y="1152" Type="Event" />
     <Input Name="ack" x="720" y="2012" Type="Data" />
@@ -65,8 +66,8 @@
     <Input Name="reset" x="1040" y="812" Type="Data" />
     <Input Name="stop" x="980" y="1252" Type="Data" />
     <Input Name="READY" x="2000" y="2472" Type="Event" />
-    <Input Name="EMPTY" x="2000" y="2352" Type="Event" />
     <Input Name="NOT_READY" x="1880" y="2552" Type="Event" />
+    <Input Name="empty" x="900" y="312" Type="Data" />
     <Output Name="CNF" x="3800" y="2172" Type="Event" />
     <Output Name="start_led" x="4060" y="2552" Type="Data" />
     <Output Name="reset_led" x="4060" y="2612" Type="Data" />
@@ -99,8 +100,10 @@
       <Connection Source="REQ" Destination="FB6.EI" dx1="49.54175" />
       <Connection Source="FB6.EO" Destination="FB1.RESET" dx1="47.16663" />
       <Connection Source="READY" Destination="FB1.READY" />
-      <Connection Source="EMPTY" Destination="FB1.EMPTY" />
       <Connection Source="NOT_READY" Destination="FB1.NOT_READY" dx1="41.39575" />
+      <Connection Source="REQ" Destination="FB8.REQ" dx1="49.54169" />
+      <Connection Source="FB6.EO" Destination="FB8.REQ" dx1="47.16663" dx2="30" dy="-110" />
+      <Connection Source="FB8.EMPTY" Destination="FB1.EMPTY" dx1="46.8335" />
     </EventConnections>
     <DataConnections>
       <Connection Source="ack" Destination="FB3.PERMIT" />
@@ -110,23 +113,23 @@
       <Connection Source="FB1.ack_led" Destination="FB1.ack_led_i">
         <Points>
           <Points>
-            <X>784.182251</X>
+            <X>784.1823</X>
             <Y>720</Y>
           </Points>
           <Points>
-            <X>661.1616</X>
+            <X>656.1617</X>
             <Y>720</Y>
           </Points>
           <Points>
-            <X>661.1616</X>
-            <Y>739</Y>
+            <X>656.1617</X>
+            <Y>738.5</Y>
           </Points>
           <Points>
-            <X>482.031372</X>
-            <Y>739</Y>
+            <X>477.031433</X>
+            <Y>738.5</Y>
           </Points>
           <Points>
-            <X>482.031372</X>
+            <X>477.031433</X>
             <Y>690</Y>
           </Points>
           <Points>
@@ -139,6 +142,7 @@
       <Connection Source="start" Destination="FB4.PERMIT" />
       <Connection Source="stop" Destination="FB5.PERMIT" dx1="40" />
       <Connection Source="reset" Destination="FB6.PERMIT" />
+      <Connection Source="empty" Destination="FB8.empty" dx1="44.0625" />
     </DataConnections>
   </FBNetwork>
 </FBType>

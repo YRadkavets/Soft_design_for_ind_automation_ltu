@@ -3,117 +3,113 @@
   <Deployable>
     <DeployInformation Type="Working">
       <FileGroup Name="FileList">
-        <FileItem Name="Composites/Main#Test_HMI.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>052F6F112D418A8C5DC53C59AC4C666C16858E87F613AD9E75B07D0FA03F27F3</Hash>
+        <FileItem Name="Composites/Main#Test_HMI.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>87FE791F609FC627C96159B567A0258E0119EE2B187CCE19D08306B2C140CC66</Hash>
         </FileItem>
-        <FileItem Name="Composites/Main#Test.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>9F134C4AF30489E9887543DB1F9E09FAB3F69333D87955EB00098DACEEE46A3D</Hash>
+        <FileItem Name="Composites/Main#Test.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>17CA547B6F6DFCA6D57F615D8E34091F29C64297B44609194081E9FFD217A2BE</Hash>
         </FileItem>
-        <FileItem Name="Basics/Main#integEC.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>22372B8B9BE3BC259EB0B37019900C8593F7798E3113CE7D7C1C59AEAB0B42D6</Hash>
+        <FileItem Name="Basics/Main#integEC.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>5D6E9EDB76E86EF358B655F7F82B2B910AA7A80604EF00392D157667662228A2</Hash>
         </FileItem>
-        <FileItem Name="Basics/Main#ChangeDetect.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>ABABF1BCD8B35EE06DC08B14E93C534030A5ABB20CAB74E8B50515DD853AA81A</Hash>
+        <FileItem Name="Basics/Main#ChangeDetect.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>462027326DA1E32CC857A1308CDD2FAE6D1BFC3A01343F36172414062AD324C3</Hash>
         </FileItem>
-        <FileItem Name="Basics/Main#InRange.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>B904613AA2545E6D8F62148F46B064FB80B1AEDD3E4D91AA4E94E7075FE75F89</Hash>
+        <FileItem Name="Basics/Main#InRange.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>1D9FA88E4D84176DE44DCF4866EF6B886777D4CF53A697C389FD735A3946E5B4</Hash>
         </FileItem>
-        <FileItem Name="Basics/Main#ArmControl.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>FD87908F3D3C7D43F75E2C9D601B4E545989A1A27329BD74BA77E37A7E14BA59</Hash>
+        <FileItem Name="Basics/Main#ArmControl.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>F41DC67A444C497171E028D7794AB83BCF7A6B2C8CBB2399C1F666BC1B75F1B6</Hash>
         </FileItem>
-        <FileItem Name="Basics/Main#Bool2Real.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>0AB156623E2E9B0F3897CDCF9D82A7A5EB666E845044021E417CFF7574A597E4</Hash>
+        <FileItem Name="Basics/Main#Bool2Real.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>87A078493AA8C1093C3D5A2BC449B973A92FA523902CC64FBB9C928BDDF3C9CB</Hash>
         </FileItem>
-        <FileItem Name="Basics/Main#Real2Bool.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>A35FF750E62C2CCBA257183DA9E71CE252C9F46969A8225C2146C73B17F57395</Hash>
+        <FileItem Name="Basics/Main#Real2Bool.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>BD9653F0BAB26A900AB5A32AC2FD3A7E026EB215C9066F636199E95D9E250223</Hash>
         </FileItem>
-        <FileItem Name="Composites/Main#TransferUnit.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>CB68068F0DB8DAA4BDD83157A8B95AF3F11D9430827184AA7E82FAAFE2EE6EB6</Hash>
+        <FileItem Name="Composites/Main#TransferUnit.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>0768D688D9CBD13E4576E7EA4052E6678A9509B821CB54AA746468F132A8F741</Hash>
         </FileItem>
-        <FileItem Name="Basics/Main#BigDemux.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>E41F782354841360972709BE42CB8927499145D2253D54A06E5E9A9F1B222520</Hash>
+        <FileItem Name="Basics/Main#BigDemux.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>0E31E041591A8B995335A9393AFE079F3856A66B84FC808E18AF2A639D502195</Hash>
         </FileItem>
-        <FileItem Name="Basics/Main#PhysicsRulesWorkPieces.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>5907070E6FD14FA0F79247EBD82624DA6844FD7222DBDDB2892E4D0FEA506E13</Hash>
+        <FileItem Name="Basics/Main#PhysicsRulesWorkPieces.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>B98CE452F4F70BD28008F5985F697C3DEEA7F478088C5C3D76C7F49C0CF73A25</Hash>
         </FileItem>
-        <FileItem Name="Composites/Main#WorkPieces.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>51213AF2A7567FCE6F4676DDDBC755918A56B1F2CDF9EF701EC2A22D686AD0CF</Hash>
+        <FileItem Name="Composites/Main#WorkPieces.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>F03D02A20EFE7226FD0AE22DAC51F2FB4FDCD0B40AA4591AEEAA7D422A46AEA3</Hash>
         </FileItem>
-        <FileItem Name="Composites/Main#Model_HMI.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>A7018576208EB883CD6D4E38BA6A72B9798B041D675A161D689433AA08945F8B</Hash>
+        <FileItem Name="Composites/Main#Model_HMI.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>C29009050DEE9CEFA49BD30DE9FD228647C12141FF86253B54B160BBC7441C1D</Hash>
         </FileItem>
-        <FileItem Name="Basics/Main#CylControl.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>5D293F064757083684CE50CBB15F395016F161D8B4AD11513AFB38E2E8FD53F2</Hash>
+        <FileItem Name="Basics/Main#CylControl.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>22A008823ED6F026A0EF90F9D3E4301D5B6F1E2479E44D96224F15E6C7F8AEA1</Hash>
         </FileItem>
-        <FileItem Name="Composites/Main#Pusher.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>40D8B75B66EC521B9DE0D4657EDDEBF4376DBF95B1414DD993258BC57F8E96C9</Hash>
+        <FileItem Name="Composites/Main#Pusher.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>5EA22219814AACD1101B1DB6BA81284A47F1EB440077122C3A79AFBEA8F2E29A</Hash>
         </FileItem>
-        <FileItem Name="Composites/Main#Model.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>7C847454C3D9EA80F74E3F03BF959B339D78CF526E3FE6F3CC4D91430B0DCCA6</Hash>
+        <FileItem Name="Composites/Main#Model.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>9FB3F104FB6574499E129C78FAA1191020413CE0E5CA8013E81912BD8EE1CFE3</Hash>
         </FileItem>
-        <FileItem Name="Composites/Main#ButtonsPanel_HMI.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>DF9F48C38A13E654F1E5F9318ED18AE6B7004D6D04F36654490FC42304608685</Hash>
+        <FileItem Name="Composites/Main#ButtonsPanel_HMI.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>D6976F41C9C876D769BB7C12E321F3ED1B2674C2DFA6B52EDF2C88CDFD9FD0A6</Hash>
         </FileItem>
-        <FileItem Name="Composites/Main#ButtonsPanel.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>A4D6626E8AAC655C3AB14688133583AE017598BC5BE7C1148DF7B2B71E433F3B</Hash>
+        <FileItem Name="Composites/Main#ButtonsPanel.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>C607120E62CE0224833EF202810716156ABA88585ECC923980E0CEB5E0D52348</Hash>
         </FileItem>
-        <FileItem Name="Basics/Main#Panel_button_cotrol.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>617FE3D9B7D26917FCA18D7E00DBEFFF1DBB7959D4DD281608430FC38377D2A6</Hash>
+        <FileItem Name="Basics/Main#Panel_button_cotrol.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>AE98E5F064F727BB9BE8DB676300DD70280D444DB52FFA77B9ABD7701D61B697</Hash>
         </FileItem>
-        <FileItem Name="Basics/Main#ManualAutomaticSwitch.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>F6AA596F943E95A8986243158E3DBFA6DD6DCE149D2DA4683D8C95A09C38A427</Hash>
+        <FileItem Name="Basics/Main#Empty_cotrol.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>6A5B364DB7B12394DF766B1F1FE5F5E852D3CF9C8F825CEC89867DC7BE7089EB</Hash>
         </FileItem>
-        <FileItem Name="Composites/Main#ButtonPanel_Control.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>C58761BF8845D248CC79CA854CF4F10B1FD7A6895C1BA8842A9E1A825D727375</Hash>
+        <FileItem Name="Composites/Main#EmptyControl.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>F9E0CBD204FEEF8E17E3339F416F1ECF6351D6BFD499AE650094EAF7516A6721</Hash>
         </FileItem>
-        <FileItem Name="Basics/Main#Empty_cotrol.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>171E7E13C49BAB9638E108ED72B7EA8E33C928FC0DF66EA2FCAE7652A21A6C62</Hash>
+        <FileItem Name="Composites/Main#ButtonPanel_Control.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>5B6F0686BFE3470EF517C7BCB492F73DA149EAADA6A8D974B3347FCDDAC33E64</Hash>
         </FileItem>
-        <FileItem Name="Composites/Main#EmptyControl.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>D32FFDD833FA89BF1A9ED8BC4EADB18319C0A32CFF8A5D07E373FF113FCFD55F</Hash>
+        <FileItem Name="Basics/Main#Automatic_storage_sm.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>5D819E3D86B48C7E7F37277CF2957C7F49B7802415A807078DCA7F9EABCCFD67</Hash>
         </FileItem>
-        <FileItem Name="Basics/Main#Automatic_storage_sm.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T17:50:26</Modified>
-          <Hash>A28057489158B7296908A58B35A80AFC7E1CD85E464E59DEA9D157E6097B8325</Hash>
+        <FileItem Name="Composites/Main#STORAGE_Control.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>1017676027B0D8A56B170ECD2652DCA32230A9C7A26B628608DDD8A93D9FC18A</Hash>
         </FileItem>
-        <FileItem Name="Composites/Main#STORAGE_Control.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T17:52:16</Modified>
-          <Hash>53F82BFAAD48BBB0DBDDF8704ABBBD15F1E8A4DB3220444B6F108C25E9FD778A</Hash>
+        <FileItem Name="Basics/Main#ARM_Control.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T20:14:10</Modified>
+          <Hash>B67734970C1AD41C6C22A903DDE2FD6CCEAD568297D10D2FA6256419CD7A64FE</Hash>
         </FileItem>
-        <FileItem Name="Basics/Main#Automtic_arm_sm.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T17:50:26</Modified>
-          <Hash>3DD6150FF0CF21CA293B38AC13EF17F368ED7267382DA261981A93A495D8C3D4</Hash>
+        <FileItem Name="Basics/Main#stop.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>9EFA082667FE9959D2622A55AAAEB478CBE6E8EC06AF54CDB13FA3AA1430B3F6</Hash>
         </FileItem>
-        <FileItem Name="Basics/Main#stop.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T16:50:22</Modified>
-          <Hash>28DAA20AE32536C2B734107E5A59FB3BF81B25405E935E896D1B854275C5D4E4</Hash>
-        </FileItem>
-        <FileItem Name="Basics/Main#manual.bin" Library="IEC61499.dll" BuildSnapshot="{9840814F-D454-4B9A-89B0-40BA0F5877DB}">
-          <Modified>2026-10-21T18:13:48</Modified>
-          <Hash>FA4C6D66FF5CB2717A86EFE9602B623445407C183D84AC9A9FD090EF121071B5</Hash>
+        <FileItem Name="Basics/Main#manual.bin" Library="IEC61499.dll" BuildSnapshot="{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}">
+          <Modified>2026-10-22T19:31:48</Modified>
+          <Hash>26EBCFA2ABD45B4428CCD1AD0BFBEFEAFFE22E2774FCB2F76E650D9C047A354E</Hash>
         </FileItem>
       </FileGroup>
       <FileGroup Name="DeployList">
@@ -136,13 +132,12 @@
         <FileItem Name="Composites/Main#ButtonsPanel_HMI.bin" Library="IEC61499.dll" />
         <FileItem Name="Composites/Main#ButtonsPanel.bin" Library="IEC61499.dll" />
         <FileItem Name="Basics/Main#Panel_button_cotrol.bin" Library="IEC61499.dll" />
-        <FileItem Name="Basics/Main#ManualAutomaticSwitch.bin" Library="IEC61499.dll" />
-        <FileItem Name="Composites/Main#ButtonPanel_Control.bin" Library="IEC61499.dll" />
         <FileItem Name="Basics/Main#Empty_cotrol.bin" Library="IEC61499.dll" />
         <FileItem Name="Composites/Main#EmptyControl.bin" Library="IEC61499.dll" />
+        <FileItem Name="Composites/Main#ButtonPanel_Control.bin" Library="IEC61499.dll" />
         <FileItem Name="Basics/Main#Automatic_storage_sm.bin" Library="IEC61499.dll" />
         <FileItem Name="Composites/Main#STORAGE_Control.bin" Library="IEC61499.dll" />
-        <FileItem Name="Basics/Main#Automtic_arm_sm.bin" Library="IEC61499.dll" />
+        <FileItem Name="Basics/Main#ARM_Control.bin" Library="IEC61499.dll" />
         <FileItem Name="Basics/Main#stop.bin" Library="IEC61499.dll" />
         <FileItem Name="Basics/Main#manual.bin" Library="IEC61499.dll" />
       </FileGroup>

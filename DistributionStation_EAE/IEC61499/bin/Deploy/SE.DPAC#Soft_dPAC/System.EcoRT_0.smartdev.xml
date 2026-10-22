@@ -8,9 +8,8 @@
         <FB ID="2296FA8D8232BF54" Name="DistributionStation" Type="Model" x="1960" y="440" Namespace="Main" />
         <FB ID="42AD414C1D0D1405" Name="PanelButtons" Type="ButtonsPanel" x="2840" y="440" Namespace="Main" />
         <FB ID="6A9EE45C8F9E2338" Name="FB4" Type="ButtonPanel_Control" x="2640" y="1380" Namespace="Main" />
-        <FB ID="2E904AF9986F104C" Name="FB1" Type="EmptyControl" x="1358.49" y="1082.146" Namespace="Main" />
         <FB ID="69E57BDDC7811FDC" Name="FB2" Type="STORAGE_Control" x="640" y="1500" Namespace="Main" />
-        <FB ID="7143E68796ED9160" Name="FB3" Type="Automtic_arm_sm" x="1360" y="2380" Namespace="Main" />
+        <FB ID="7143E68796ED9160" Name="FB3" Type="ARM_Control" x="1360" y="2380" Namespace="Main" />
         <FB ID="840DF3D0932BAB1B" Name="FB5" Type="E_REND" x="2320" y="2500" Namespace="IEC61499.Standard" />
         <FB ID="AD8ABFDA8F1B8194" Name="FB6" Type="stop" x="4140" y="2220" Namespace="Main" />
         <FB ID="C24B7327A7F99125" Name="FB7" Type="manual" x="2440" y="1140" Namespace="Main" />
@@ -24,43 +23,6 @@
           <Connection Source="FB4.INITO" Destination="PanelButtons.REQ" dx1="50" dx2="100" dy="-240.1458" />
           <Connection Source="DistributionStation.INITO" Destination="PanelButtons.INIT" />
           <Connection Source="DistributionStation.CNF" Destination="FB4.REQ" dx1="110.5105" />
-          <Connection Source="DistributionStation.CNF" Destination="FB1.REQ">
-            <Points>
-              <Points>
-                <X>597.2448</X>
-                <Y>135</Y>
-              </Points>
-              <Points>
-                <X>607.5</X>
-                <Y>135</Y>
-              </Points>
-              <Points>
-                <X>607.5</X>
-                <Y>282.5</Y>
-              </Points>
-              <Points>
-                <X>477.5</X>
-                <Y>282.5</Y>
-              </Points>
-              <Points>
-                <X>477.5</X>
-                <Y>252.5</Y>
-              </Points>
-              <Points>
-                <X>322.5</X>
-                <Y>252.5</Y>
-              </Points>
-              <Points>
-                <X>322.5</X>
-                <Y>280.5365</Y>
-              </Points>
-              <Points>
-                <X>334.6225</X>
-                <Y>280.5365</Y>
-              </Points>
-            </Points>
-          </Connection>
-          <Connection Source="FB1.EMPTY" Destination="FB4.EMPTY" dx1="48.34338" />
           <Connection Source="DistributionStation.CNF" Destination="FB2.REQ" dx1="101.0208" dx2="70" dy="870" />
           <Connection Source="FB4.START" Destination="FB2.START" dx1="60" dx2="70" dy="508" />
           <Connection Source="DistributionStation.INITO" Destination="FB2.INIT" dx1="121.0208" dx2="50" dy="930" />
@@ -81,14 +43,13 @@
           <Connection Source="FB4.STOP" Destination="FB6.STOP" dx1="140" />
           <Connection Source="FB6.CNF" Destination="FB3.REQ" dx1="40" dx2="70" dy="848" />
           <Connection Source="FB6.CNF" Destination="FB2.REQ" dx1="56.91699" dx2="150" dy="-690" />
-          <Connection Source="FB4.RESET" Destination="FB1.REQ" dx1="130" dx2="60" dy="-646.1457" />
           <Connection Source="FB4.RESET" Destination="FB4.INIT" dx1="130" dx2="200" dy="-348.2916" />
           <Connection Source="FB4.RESET" Destination="FB3.RESET" dx1="100" dx2="110" dy="549.854" />
           <Connection Source="FB4.RESET" Destination="FB2.RESET" dx1="100" dx2="110" dy="568" />
-          <Connection Source="FB4.STOP" Destination="FB7.STOP" />
+          <Connection Source="FB4.STOP" Destination="FB7.STOP" dx1="90" dx2="40" dy="-468.2916" />
           <Connection Source="FB2.CNF" Destination="FB7.REQ" dx1="96.16663" />
           <Connection Source="FB3.CNF" Destination="FB7.REQ" dx1="56.16663" />
-          <Connection Source="PanelButtons.CNF" Destination="FB7.REQ" />
+          <Connection Source="PanelButtons.CNF" Destination="FB7.REQ" dx1="40" dx2="50" dy="519.8542" />
           <Connection Source="TestPanel.CNF" Destination="FB7.REQ" dx1="260.2084" />
           <Connection Source="FB7.CNF" Destination="DistributionStation.REQ">
             <Points>
@@ -125,6 +86,7 @@
                 <Y>135</Y>
               </Points>
             </Points>
+            <AvoidsNodes>false</AvoidsNodes>
           </Connection>
         </EventConnections>
         <DataConnections>
@@ -135,7 +97,6 @@
           <Connection Source="PanelButtons.reset" Destination="FB4.reset" dx1="100" dx2="90" dy="270" />
           <Connection Source="PanelButtons.ack" Destination="FB4.ack" dx1="80" dx2="110" dy="210" />
           <Connection Source="PanelButtons.stop" Destination="FB4.stop" dx1="40" dx2="150" dy="90" />
-          <Connection Source="DistributionStation.empty" Destination="FB1.empty" dx1="41.02075" dx2="68.48999" dy="370" />
           <Connection Source="DistributionStation.pos_e" Destination="FB2.pos_e" dx1="81.02075" dx2="110" dy="670" />
           <Connection Source="DistributionStation.pos_r" Destination="FB2.pos_r" dx1="61.02075" dx2="130" dy="610" />
           <Connection Source="DistributionStation.empty" Destination="FB2.empty" dx1="41.02075" dx2="150" dy="370" />
@@ -151,17 +112,18 @@
           <Connection Source="FB3.to_next" Destination="FB7.to_next_a" dx1="136.1666" />
           <Connection Source="FB3.vcm_on" Destination="FB7.vcm_on_a" dx1="156.1666" />
           <Connection Source="FB3.vcm_off" Destination="FB7.vcm_off_a" dx1="176.1666" />
-          <Connection Source="PanelButtons.manual" Destination="FB7.manual" />
+          <Connection Source="PanelButtons.manual" Destination="FB7.manual" dx1="60" dx2="90" dy="139.8542" />
           <Connection Source="TestPanel.Retract" Destination="FB7.retract_m" dx1="40.20825" />
           <Connection Source="TestPanel.to_mgz" Destination="FB7.to_mgz_m" dx1="40.20825" />
           <Connection Source="TestPanel.to_next" Destination="FB7.to_next_m" dx1="40.20825" />
-          <Connection Source="TestPanel.vcm_on" Destination="FB7.vcm_on_m" />
-          <Connection Source="TestPanel.vm_off" Destination="FB7.vcm_off_m" />
+          <Connection Source="TestPanel.vcm_on" Destination="FB7.vcm_on_m" dx1="370.1041" />
+          <Connection Source="TestPanel.vm_off" Destination="FB7.vcm_off_m" dx1="360.1041" />
           <Connection Source="FB7.retract" Destination="DistributionStation.retract" dx1="70" dx2="40" dy="-1068.292" />
           <Connection Source="FB7.to_mgz" Destination="DistributionStation.to_mgz" dx1="90" dx2="40" dy="-1128.292" />
           <Connection Source="FB7.to_next" Destination="DistributionStation.to_next" dx1="110" dx2="40" dy="-1188.292" />
           <Connection Source="FB7.vcm_on" Destination="DistributionStation.vcm_on" dx1="130" dx2="40" dy="-1248.292" />
           <Connection Source="FB7.vcm_off" Destination="DistributionStation.vcm_off" dx1="150" dx2="40" dy="-1308.292" />
+          <Connection Source="DistributionStation.empty" Destination="FB4.empty" dx1="40" dx2="210" dy="169.8542" />
         </DataConnections>
         <AdapterConnections />
       </FBNetwork>
