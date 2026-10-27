@@ -68,7 +68,7 @@
       <IEC61499Type>CAT</IEC61499Type>
     </None>
     <None Include="Project.doc.xml" />
-    <None Include="SnapshotCompiles\{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}\Default\IEC61499.snapshot" />
+    <None Include="SnapshotCompiles\{94AEA02B-D05D-47ED-A4AC-8E57347F6007}\Default\IEC61499.snapshot" />
     <None Include="System\snapshot.xml">
       <DependentUpon>System.sys</DependentUpon>
     </None>
@@ -92,11 +92,20 @@
     <Compile Include="ADDER.fbt">
       <IEC61499Type>Basic</IEC61499Type>
     </Compile>
+    <Compile Include="arm.adp">
+      <IEC61499Type>Adapter</IEC61499Type>
+    </Compile>
     <Compile Include="ArmControl.fbt">
       <IEC61499Type>Basic</IEC61499Type>
     </Compile>
     <Compile Include="ARM_Control.fbt">
       <IEC61499Type>Basic</IEC61499Type>
+    </Compile>
+    <Compile Include="ARM_IMC.fbt">
+      <IEC61499Type>Composite</IEC61499Type>
+    </Compile>
+    <Compile Include="arm_sensor.adp">
+      <IEC61499Type>Adapter</IEC61499Type>
     </Compile>
     <Compile Include="Automatic_storage_sm.fbt">
       <IEC61499Type>Basic</IEC61499Type>
@@ -110,6 +119,9 @@
     <Compile Include="ButtonPanel_Control.fbt">
       <IEC61499Type>Composite</IEC61499Type>
     </Compile>
+    <Compile Include="buttons.adp">
+      <IEC61499Type>Adapter</IEC61499Type>
+    </Compile>
     <Compile Include="ButtonsPanel\ButtonsPanel.fbt">
       <IEC61499Type>CAT</IEC61499Type>
     </Compile>
@@ -117,6 +129,9 @@
       <IEC61499Type>CAT</IEC61499Type>
       <DependentUpon>ButtonsPanel\ButtonsPanel.fbt</DependentUpon>
       <Usage>Private</Usage>
+    </Compile>
+    <Compile Include="Button_IMC.fbt">
+      <IEC61499Type>Composite</IEC61499Type>
     </Compile>
     <Compile Include="ChangeDetect.fbt">
       <IEC61499Type>Basic</IEC61499Type>
@@ -154,6 +169,15 @@
     <Compile Include="ManualAutomaticSwitch.fbt">
       <IEC61499Type>Basic</IEC61499Type>
     </Compile>
+    <Compile Include="mgz.adp">
+      <IEC61499Type>Adapter</IEC61499Type>
+    </Compile>
+    <Compile Include="MGZ_IMC.fbt">
+      <IEC61499Type>Composite</IEC61499Type>
+    </Compile>
+    <Compile Include="mgz_sensor.adp">
+      <IEC61499Type>Adapter</IEC61499Type>
+    </Compile>
     <Compile Include="Model\Model.fbt">
       <IEC61499Type>CAT</IEC61499Type>
     </Compile>
@@ -183,7 +207,7 @@
     <Compile Include="stop.fbt">
       <IEC61499Type>Basic</IEC61499Type>
     </Compile>
-    <Compile Include="STORAGE_Control.fbt">
+    <Compile Include="supervision.fbt">
       <IEC61499Type>Composite</IEC61499Type>
     </Compile>
     <Compile Include="System\System.sys">
@@ -196,9 +220,6 @@
       <IEC61499Type>CAT</IEC61499Type>
       <DependentUpon>Test\Test.fbt</DependentUpon>
       <Usage>Private</Usage>
-    </Compile>
-    <Compile Include="to_model.adp">
-      <IEC61499Type>Adapter</IEC61499Type>
     </Compile>
     <Compile Include="TransferUnit.fbt">
       <IEC61499Type>Composite</IEC61499Type>
@@ -216,10 +237,20 @@
     <Folder Include="License" />
     <Folder Include="Log" />
     <Folder Include="SnapshotCompiles" />
-    <Folder Include="SnapshotCompiles\{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}" />
-    <Folder Include="SnapshotCompiles\{6475DFDE-BC9C-4351-BE8E-436AE7C53A0E}\Default" />
+    <Folder Include="SnapshotCompiles\{94AEA02B-D05D-47ED-A4AC-8E57347F6007}" />
+    <Folder Include="SnapshotCompiles\{94AEA02B-D05D-47ED-A4AC-8E57347F6007}\Default" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ButtonsPanel\ButtonsPanel_CAT.offline.xml">
+      <DependentUpon>ButtonsPanel.fbt</DependentUpon>
+      <Plugin>OfflineParametrizationEditor</Plugin>
+      <IEC61499Type>CAT_OFFLINE</IEC61499Type>
+    </Content>
+    <Content Include="ButtonsPanel\ButtonsPanel_CAT.opcua.xml">
+      <DependentUpon>ButtonsPanel.fbt</DependentUpon>
+      <Plugin>OPCUAConfigurator</Plugin>
+      <IEC61499Type>CAT_OPCUA</IEC61499Type>
+    </Content>
     <Content Include="Model\Model_CAT.offline.xml">
       <DependentUpon>Model.fbt</DependentUpon>
       <Plugin>OfflineParametrizationEditor</Plugin>

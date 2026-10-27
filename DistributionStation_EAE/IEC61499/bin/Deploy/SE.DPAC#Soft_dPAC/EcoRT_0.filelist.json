@@ -1,11 +1,13 @@
 {
   "snapshot": {
-    "guid": "6475dfde-bc9c-4351-be8e-436ae7c53a0e",
-    "hash": "918D1D69E3BF3304EB63344FA3B4817AC4810C5AB4B83EA2A5DC250247B6DC3A",
+    "guid": "94aea02b-d05d-47ed-a4ac-8e57347f6007",
+    "hash": "F6C7DC77BFBD84B36FC622AF1E7867D883CE751332B95ADDC83BCC14C85CCAF8",
     "app": {
-      "hash": "918D1D69E3BF3304EB63344FA3B4817AC4810C5AB4B83EA2A5DC250247B6DC3A",
+      "hash": "F6C7DC77BFBD84B36FC622AF1E7867D883CE751332B95ADDC83BCC14C85CCAF8",
       "items": [
         "Main#Test_HMI.bin",
+        "Main#arm.bin",
+        "Main#mgz.bin",
         "Main#Test.bin",
         "Main#integEC.bin",
         "Main#ChangeDetect.bin",
@@ -20,18 +22,24 @@
         "Main#Model_HMI.bin",
         "Main#CylControl.bin",
         "Main#Pusher.bin",
+        "Main#mgz_sensor.bin",
+        "Main#arm_sensor.bin",
         "Main#Model.bin",
         "Main#ButtonsPanel_HMI.bin",
+        "Main#buttons.bin",
         "Main#ButtonsPanel.bin",
+        "Main#Automatic_storage_sm.bin",
+        "Main#MGZ_IMC.bin",
+        "Main#stop.bin",
+        "Main#manual.bin",
+        "Main#supervision.bin",
+        "Main#ARM_Control.bin",
+        "Main#ARM_IMC.bin",
         "Main#Panel_button_cotrol.bin",
         "Main#Empty_cotrol.bin",
         "Main#EmptyControl.bin",
         "Main#ButtonPanel_Control.bin",
-        "Main#Automatic_storage_sm.bin",
-        "Main#STORAGE_Control.bin",
-        "Main#ARM_Control.bin",
-        "Main#stop.bin",
-        "Main#manual.bin",
+        "Main#Button_IMC.bin",
         "Device.bin"
       ]
     }

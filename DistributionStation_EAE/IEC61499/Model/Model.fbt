@@ -1,59 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
 <FBType GUID="B4BD245457C99328" Name="Model" Comment="Composite Function Block Type" Namespace="Main">
-  <Attribute Name="Configuration.FB.IDCounter" Value="8" />
+  <Attribute Name="Configuration.FB.IDCounter" Value="13" />
   <Identification Standard="61499-2" />
   <VersionInfo Organization="nxtControl GmbH" Version="0.0" Author="Andrei" Date="7/13/2016" Remarks="template" />
   <InterfaceList>
     <EventInputs>
-      <Event Name="INIT" Comment="Initialization Request">
-        <With Var="retract" />
-        <With Var="to_mgz" />
-        <With Var="to_next" />
-        <With Var="vcm_off" />
-        <With Var="vcm_on" />
-      </Event>
-      <Event Name="REQ" Comment="Normal Execution Request">
-        <With Var="retract" />
-        <With Var="to_mgz" />
-        <With Var="to_next" />
-        <With Var="vcm_off" />
-        <With Var="vcm_on" />
-      </Event>
+      <Event Name="INIT" Comment="Initialization Request" />
     </EventInputs>
     <EventOutputs>
-      <Event Name="INITO" Comment="Initialization Confirm">
-        <With Var="pos_e" />
-        <With Var="pos_r" />
-        <With Var="at_mgz" />
-        <With Var="at_next" />
-        <With Var="vmon" />
-        <With Var="empty" />
-      </Event>
-      <Event Name="CNF" Comment="Execution Confirmation">
-        <With Var="pos_e" />
-        <With Var="pos_r" />
-        <With Var="at_mgz" />
-        <With Var="at_next" />
-        <With Var="vmon" />
-        <With Var="empty" />
-      </Event>
+      <Event Name="INITO" Comment="Initialization Confirm" />
+      <Event Name="CNF" Comment="Execution Confirmation" />
     </EventOutputs>
-    <InputVars>
-      <VarDeclaration Name="retract" Type="BOOL" Comment="Input event qualifier" />
-      <VarDeclaration Name="to_mgz" Type="BOOL" />
-      <VarDeclaration Name="to_next" Type="BOOL" />
-      <VarDeclaration Name="vcm_on" Type="BOOL" />
-      <VarDeclaration Name="vcm_off" Type="BOOL" />
-    </InputVars>
-    <OutputVars>
-      <VarDeclaration Name="pos_e" Type="BOOL" Comment="Output event qualifier" />
-      <VarDeclaration Name="pos_r" Type="BOOL" />
-      <VarDeclaration Name="at_mgz" Type="BOOL" />
-      <VarDeclaration Name="at_next" Type="BOOL" />
-      <VarDeclaration Name="vmon" Type="BOOL" />
-      <VarDeclaration Name="empty" Type="BOOL" />
-    </OutputVars>
+    <Sockets>
+      <AdapterDeclaration ID="10" Name="mgz" Type="mgz" Namespace="Main" x="260" y="860" />
+      <AdapterDeclaration ID="11" Name="arm" Type="arm" Namespace="Main" x="300" y="1820" />
+    </Sockets>
+    <Plugs>
+      <AdapterDeclaration Name="mgz_sensor" Type="mgz_sensor" Namespace="Main" x="4820" y="1020" />
+      <AdapterDeclaration Name="arm_sensor" Type="arm_sensor" Namespace="Main" x="1820" y="2040" />
+      <AdapterDeclaration ID="13" Name="empty" Type="mgz_sensor" Namespace="Main" x="5280" y="1240" />
+    </Plugs>
   </InterfaceList>
   <FBNetwork>
     <FB ID="3" Name="FB3" Type="E_MERGE" x="4380" y="400" Namespace="IEC61499.Standard" />
@@ -65,20 +32,8 @@
     </FB>
     <FB ID="4" Name="FB1" Type="Pusher" x="960" y="340" Namespace="Main" />
     <Input Name="INIT" x="280" y="1311.854" Type="Event" />
-    <Input Name="REQ" x="280" y="411.8542" Type="Event" />
-    <Input Name="retract" x="280" y="671.8541" Type="Data" />
-    <Input Name="to_mgz" x="280" y="1631.854" Type="Data" />
-    <Input Name="to_next" x="280" y="1691.854" Type="Data" />
-    <Input Name="vcm_off" x="2080" y="852" Type="Data" />
-    <Input Name="vcm_on" x="2080" y="792" Type="Data" />
     <Output Name="INITO" x="4780" y="1751.854" Type="Event" />
     <Output Name="CNF" x="5400" y="411.8542" Type="Event" />
-    <Output Name="pos_e" x="1520" y="791.8542" Type="Data" />
-    <Output Name="pos_r" x="1520" y="731.8541" Type="Data" />
-    <Output Name="at_mgz" x="1500" y="1691.854" Type="Data" />
-    <Output Name="at_next" x="1500" y="1751.854" Type="Data" />
-    <Output Name="vmon" x="4160" y="731.8541" Type="Data" />
-    <Output Name="empty" x="4160" y="791.8541" Type="Data" />
     <EventConnections>
       <Connection Source="FB1.CNF" Destination="FB4.REQ">
         <AvoidsNodes>false</AvoidsNodes>
@@ -117,7 +72,7 @@
       <Connection Source="FB2.CHG" Destination="FB5.EI2">
         <Points>
           <Points>
-            <X>344.8854</X>
+            <X>344.885437</X>
             <Y>365</Y>
           </Points>
           <Points>
@@ -146,10 +101,6 @@
         <AvoidsNodes>false</AvoidsNodes>
       </Connection>
       <Connection Source="INIT" Destination="FB2.INIT" dx1="40" />
-      <Connection Source="REQ" Destination="FB1.REQ" dx1="48.95837" />
-      <Connection Source="REQ" Destination="FB2.REQ" dx1="238.9584">
-        <AvoidsNodes>false</AvoidsNodes>
-      </Connection>
       <Connection Source="FB1.INITO" Destination="FB4.INIT" />
       <Connection Source="FB2.CNF" Destination="FB4.REQ" dx1="592.6041">
         <AvoidsNodes>false</AvoidsNodes>
@@ -166,35 +117,6 @@
         <AvoidsNodes>false</AvoidsNodes>
       </Connection>
       <Connection Source="FB1.CNF" Destination="IThis.REQ" dx1="597.5006">
-        <AvoidsNodes>false</AvoidsNodes>
-      </Connection>
-      <Connection Source="REQ" Destination="FB4.REQ">
-        <Points>
-          <Points>
-            <X>135.114578</X>
-            <Y>109.963547</Y>
-          </Points>
-          <Points>
-            <X>172.5</X>
-            <Y>109.963547</Y>
-          </Points>
-          <Points>
-            <X>172.5</X>
-            <Y>227.5</Y>
-          </Points>
-          <Points>
-            <X>367.5</X>
-            <Y>227.5</Y>
-          </Points>
-          <Points>
-            <X>367.5</X>
-            <Y>125</Y>
-          </Points>
-          <Points>
-            <X>665</X>
-            <Y>125</Y>
-          </Points>
-        </Points>
         <AvoidsNodes>false</AvoidsNodes>
       </Connection>
       <Connection Source="FB4.CNF" Destination="FB1.REQ" dx1="85.0625" dx2="70" dy="-318">
@@ -237,23 +159,76 @@
         </Points>
         <AvoidsNodes>false</AvoidsNodes>
       </Connection>
+      <Connection Source="FB4.CNF" Destination="mgz_sensor.CNF" dx1="342.6875" />
+      <Connection Source="FB1.CNF" Destination="mgz_sensor.CNF">
+        <Points>
+          <Points>
+            <X>355.625</X>
+            <Y>125</Y>
+          </Points>
+          <Points>
+            <X>382.5</X>
+            <Y>125</Y>
+          </Points>
+          <Points>
+            <X>382.5</X>
+            <Y>82.5</Y>
+          </Points>
+          <Points>
+            <X>857.5</X>
+            <Y>82.5</Y>
+          </Points>
+          <Points>
+            <X>857.5</X>
+            <Y>265</Y>
+          </Points>
+          <Points>
+            <X>1200</X>
+            <Y>265</Y>
+          </Points>
+        </Points>
+      </Connection>
+      <Connection Source="mgz.CNF" Destination="FB1.REQ" dx1="50" />
+      <Connection Source="arm.CNF" Destination="FB2.REQ" dx1="50" />
+      <Connection Source="arm.CNF" Destination="FB4.REQ" dx1="860.7916" />
+      <Connection Source="FB2.CNF" Destination="arm_sensor.REQ" dx1="120" />
+      <Connection Source="FB4.CNF" Destination="arm_sensor.REQ" dx1="342.6875" dx2="50" dy="1130" />
+      <Connection Source="FB4.CNF" Destination="empty.CNF">
+        <Points>
+          <Points>
+            <X>846.8281</X>
+            <Y>140</Y>
+          </Points>
+          <Points>
+            <X>932.5</X>
+            <Y>140</Y>
+          </Points>
+          <Points>
+            <X>932.5</X>
+            <Y>182.5</Y>
+          </Points>
+          <Points>
+            <X>1287.5</X>
+            <Y>182.5</Y>
+          </Points>
+          <Points>
+            <X>1287.5</X>
+            <Y>320</Y>
+          </Points>
+          <Points>
+            <X>1315</X>
+            <Y>320</Y>
+          </Points>
+        </Points>
+      </Connection>
     </EventConnections>
     <DataConnections>
-      <Connection Source="to_mgz" Destination="FB2.to_mgz" dx1="40" />
-      <Connection Source="to_next" Destination="FB2.to_next" dx1="40" />
-      <Connection Source="FB2.at_mgz" Destination="at_mgz" dx1="40" />
-      <Connection Source="FB2.at_next" Destination="at_next" dx1="40" />
-      <Connection Source="FB1.Retracted" Destination="pos_r" dx1="48.75012" />
-      <Connection Source="FB1.Extended" Destination="pos_e" dx1="48.75012" />
-      <Connection Source="retract" Destination="FB1.Retract" dx1="40" />
       <Connection Source="FB1.Pos" Destination="FB4.PosPusher" dx1="1177.5">
         <AvoidsNodes>false</AvoidsNodes>
       </Connection>
       <Connection Source="FB2.angle" Destination="FB4.AngleTransferUnit" dx1="1112.604">
         <AvoidsNodes>false</AvoidsNodes>
       </Connection>
-      <Connection Source="FB4.vmon" Destination="vmon" dx1="322.6875" />
-      <Connection Source="FB4.empty" Destination="empty" dx1="302.6875" />
       <Connection Source="FB2.angle" Destination="IThis.AngleTransUnit" dx1="1112.604">
         <AvoidsNodes>false</AvoidsNodes>
       </Connection>
@@ -339,8 +314,72 @@
       <Connection Source="FB4.empty" Destination="IThis.mgzEmpty" dx1="532.6875">
         <AvoidsNodes>false</AvoidsNodes>
       </Connection>
-      <Connection Source="vcm_on" Destination="FB4.VcmON" />
-      <Connection Source="vcm_off" Destination="FB4.VcmOFF" />
+      <Connection Source="FB4.empty" Destination="mgz_sensor.empty" dx1="302.6875" />
+      <Connection Source="FB1.Retracted" Destination="mgz_sensor.pos_r">
+        <Points>
+          <Points>
+            <X>355.625</X>
+            <Y>190</Y>
+          </Points>
+          <Points>
+            <X>372.5</X>
+            <Y>190</Y>
+          </Points>
+          <Points>
+            <X>372.5</X>
+            <Y>82.5</Y>
+          </Points>
+          <Points>
+            <X>857.5</X>
+            <Y>82.5</Y>
+          </Points>
+          <Points>
+            <X>857.5</X>
+            <Y>330</Y>
+          </Points>
+          <Points>
+            <X>1200</X>
+            <Y>330</Y>
+          </Points>
+        </Points>
+      </Connection>
+      <Connection Source="FB1.Extended" Destination="mgz_sensor.pos_e">
+        <Points>
+          <Points>
+            <X>355.625</X>
+            <Y>205</Y>
+          </Points>
+          <Points>
+            <X>367.5</X>
+            <Y>205</Y>
+          </Points>
+          <Points>
+            <X>367.5</X>
+            <Y>82.5</Y>
+          </Points>
+          <Points>
+            <X>857.5</X>
+            <Y>82.5</Y>
+          </Points>
+          <Points>
+            <X>857.5</X>
+            <Y>315</Y>
+          </Points>
+          <Points>
+            <X>1200</X>
+            <Y>315</Y>
+          </Points>
+        </Points>
+      </Connection>
+      <Connection Source="mgz.retract" Destination="FB1.Retract" dx1="49.08331" />
+      <Connection Source="arm.to_mgz" Destination="FB2.to_mgz" dx1="100.7916" />
+      <Connection Source="arm.to_next" Destination="FB2.to_next" dx1="100.7916" />
+      <Connection Source="arm.vcm_on" Destination="FB4.VcmON" dx1="860.7916" />
+      <Connection Source="arm.vcm_off" Destination="FB4.VcmOFF" dx1="860.7916" />
+      <Connection Source="FB2.at_mgz" Destination="arm_sensor.at_mgz" dx1="40" />
+      <Connection Source="FB2.at_next" Destination="arm_sensor.at_next" dx1="40" />
+      <Connection Source="FB4.vmon" Destination="arm_sensor.v_mon" dx1="322.6875" dx2="110" dy="930" />
+      <Connection Source="FB4.empty" Destination="empty.empty" dx1="302.6875" />
     </DataConnections>
   </FBNetwork>
 </FBType>

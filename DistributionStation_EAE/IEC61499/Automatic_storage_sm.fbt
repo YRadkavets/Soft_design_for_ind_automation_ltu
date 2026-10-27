@@ -105,22 +105,22 @@
       <ECTransition Source="RETRACTED" Destination="START" Condition="REQ[manual AND NOT stop_flag]" x="1521.415" y="929.7028">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="302,277,397,145" />
       </ECTransition>
-      <ECTransition Source="INITIAL" Destination="NOT_READY" Condition="REQ[manual]" x="2936.145" y="1017.5">
+      <ECTransition Source="INITIAL" Destination="NOT_READY" Condition="REQ[manual]" x="2936.325" y="1017.5">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="787.1198,257.0167,684.9738,261.9531" />
       </ECTransition>
-      <ECTransition Source="NOT_READY" Destination="START" Condition="1" x="2202.386" y="801.9351">
+      <ECTransition Source="NOT_READY" Destination="START" Condition="1" x="2202.748" y="801.9352">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="546.7855,205.5424,546.5254,194.9634" />
       </ECTransition>
       <ECTransition Source="EXTENDED" Destination="STOP" Condition="REQ[stop_flag]" x="1519.214" y="2350.864">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="495,691.6666,215.373,612.4146" />
       </ECTransition>
-      <ECTransition Source="STOP" Destination="RESET" Condition="RESET" x="627.7513" y="843.6526">
+      <ECTransition Source="STOP" Destination="RESET" Condition="RESET" x="625.4118" y="843.6527">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="138.5224,224.9109,168.2878,189.9037" />
       </ECTransition>
       <ECTransition Source="RETRACTED" Destination="STOP" Condition="REQ[stop_flag]" x="1017.858" y="1526.786">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="296.8037,408.8658,219.0892,367.027" />
       </ECTransition>
-      <ECTransition Source="RESET" Destination="START" Condition="1" x="1646.245" y="574.9321">
+      <ECTransition Source="RESET" Destination="START" Condition="1" x="1646.245" y="574.932">
         <Attribute Name="Configuration.Transaction.BezierPoints" Value="363.7872,136.8103,459.9227,141.3342" />
       </ECTransition>
     </ECC>

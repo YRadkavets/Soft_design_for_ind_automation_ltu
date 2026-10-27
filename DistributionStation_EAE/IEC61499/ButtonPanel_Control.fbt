@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
 <FBType GUID="abdb566a-e4e6-4897-ae6c-598bb93ee7f0" Name="ButtonPanel_Control" Comment="Extracted Composite Function Block Type" Namespace="Main">
-  <Attribute Name="Configuration.FB.IDCounter" Value="11" />
+  <Attribute Name="Configuration.FB.IDCounter" Value="12" />
   <Identification Standard="61499-2" />
   <VersionInfo Author="lizar" Date="10/19/2026" />
   <InterfaceList>
@@ -67,7 +67,7 @@
     <Input Name="stop" x="980" y="1252" Type="Data" />
     <Input Name="READY" x="2000" y="2472" Type="Event" />
     <Input Name="NOT_READY" x="1880" y="2552" Type="Event" />
-    <Input Name="empty" x="900" y="312" Type="Data" />
+    <Input Name="empty" x="860" y="312" Type="Data" />
     <Output Name="CNF" x="3800" y="2172" Type="Event" />
     <Output Name="start_led" x="4060" y="2552" Type="Data" />
     <Output Name="reset_led" x="4060" y="2612" Type="Data" />
@@ -101,9 +101,11 @@
       <Connection Source="FB6.EO" Destination="FB1.RESET" dx1="47.16663" />
       <Connection Source="READY" Destination="FB1.READY" />
       <Connection Source="NOT_READY" Destination="FB1.NOT_READY" dx1="41.39575" />
-      <Connection Source="REQ" Destination="FB8.REQ" dx1="49.54169" />
-      <Connection Source="FB6.EO" Destination="FB8.REQ" dx1="47.16663" dx2="30" dy="-110" />
+      <Connection Source="FB6.EO" Destination="FB8.REQ" dx1="377.1666" dx2="30" dy="-120">
+        <AvoidsNodes>false</AvoidsNodes>
+      </Connection>
       <Connection Source="FB8.EMPTY" Destination="FB1.EMPTY" dx1="46.8335" />
+      <Connection Source="REQ" Destination="FB8.REQ" dx1="49.54169" />
     </EventConnections>
     <DataConnections>
       <Connection Source="ack" Destination="FB3.PERMIT" />
