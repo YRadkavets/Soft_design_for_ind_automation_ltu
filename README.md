@@ -1,4 +1,4 @@
-# Simulated MPS Distribution Station Control
+# Simulated Distribution Station Control
 
 ## Overview
 
