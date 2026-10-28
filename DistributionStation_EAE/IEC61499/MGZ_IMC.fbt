@@ -25,28 +25,28 @@
       <VarDeclaration Name="stop_flag" Type="BOOL" />
     </InputVars>
     <Sockets>
-      <AdapterDeclaration ID="4" Name="mgz_sensor" Type="mgz_sensor" Namespace="Main" x="1260" y="2220" />
+      <AdapterDeclaration ID="4" Name="mgz_sensor" Type="mgz_sensor" Namespace="Main" x="1240" y="1440" />
     </Sockets>
     <Plugs>
-      <AdapterDeclaration Name="mgz" Type="mgz" Namespace="Main" x="3600" y="2120" />
+      <AdapterDeclaration Name="mgz" Type="mgz" Namespace="Main" x="3580" y="1340" />
     </Plugs>
   </InterfaceList>
   <FBNetwork>
-    <FB ID="1" Name="FB2" Type="Automatic_storage_sm" x="2480" y="1480" Namespace="Main" />
-    <FB ID="2" Name="FB3" Type="E_DELAY" x="2620" y="2240" Namespace="IEC61499.Standard">
+    <FB ID="1" Name="FB2" Type="Automatic_storage_sm" x="2460" y="700" Namespace="Main" />
+    <FB ID="2" Name="FB3" Type="E_DELAY" x="2600" y="1720" Namespace="IEC61499.Standard">
       <Parameter Name="DT" Value="T#200ms" />
     </FB>
-    <Input Name="INIT" x="1900" y="1492" Type="Event" />
-    <Input Name="REQ" x="1520" y="1552" Type="Event" />
-    <Input Name="START" x="1860" y="1612" Type="Event" />
-    <Input Name="manual" x="1800" y="2112" Type="Data" />
-    <Input Name="stop_flag" x="1780" y="2172" Type="Data" />
-    <Input Name="RESET" x="1920" y="1712" Type="Event" />
-    <Output Name="NOT_READY" x="3300" y="1732" Type="Event" />
-    <Output Name="READY" x="3300" y="1612" Type="Event" />
+    <Input Name="INIT" x="1880" y="712" Type="Event" />
+    <Input Name="REQ" x="1500" y="772" Type="Event" />
+    <Input Name="START" x="1840" y="832" Type="Event" />
+    <Input Name="manual" x="1780" y="1332" Type="Data" />
+    <Input Name="stop_flag" x="1760" y="1392" Type="Data" />
+    <Input Name="RESET" x="1900" y="932" Type="Event" />
+    <Output Name="NOT_READY" x="3280" y="952" Type="Event" />
+    <Output Name="READY" x="3280" y="832" Type="Event" />
     <EventConnections>
-      <Connection Source="FB2.START_TIMER" Destination="FB3.START" dx1="41.89575" dx2="50" dy="930" />
-      <Connection Source="FB3.EO" Destination="FB2.TIMEOUT" dx1="48.5" dx2="30" dy="350" />
+      <Connection Source="FB2.START_TIMER" Destination="FB3.START" dx1="81.89575" dx2="50" dy="590" />
+      <Connection Source="FB3.EO" Destination="FB2.TIMEOUT" dx1="48.5" dx2="150" dy="-110" />
       <Connection Source="INIT" Destination="FB2.INIT" />
       <Connection Source="REQ" Destination="FB2.REQ" />
       <Connection Source="START" Destination="FB2.START" />
@@ -57,28 +57,28 @@
       <Connection Source="mgz_sensor.CNF" Destination="FB2.REQ">
         <Points>
           <Points>
-            <X>388.0521</X>
-            <Y>565</Y>
+            <X>383.0521</X>
+            <Y>370</Y>
           </Points>
           <Points>
-            <X>398.0521</X>
-            <Y>565</Y>
+            <X>393.0521</X>
+            <Y>370</Y>
           </Points>
           <Points>
-            <X>398.0521</X>
-            <Y>477.5</Y>
+            <X>393.0521</X>
+            <Y>282.5</Y>
           </Points>
           <Points>
-            <X>442.5</X>
-            <Y>477.5</Y>
+            <X>437.5</X>
+            <Y>282.5</Y>
           </Points>
           <Points>
-            <X>442.5</X>
-            <Y>395</Y>
+            <X>437.5</X>
+            <Y>200</Y>
           </Points>
           <Points>
-            <X>615</X>
-            <Y>395</Y>
+            <X>610</X>
+            <Y>200</Y>
           </Points>
         </Points>
       </Connection>

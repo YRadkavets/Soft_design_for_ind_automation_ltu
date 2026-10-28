@@ -30,30 +30,30 @@
       <VarDeclaration Name="FB6_stop_flag" Type="BOOL" Comment="Output event qualifier" />
     </OutputVars>
     <Sockets>
-      <AdapterDeclaration ID="4" Name="MGZ" Type="mgz" Namespace="Main" x="2780" y="1320" />
-      <AdapterDeclaration ID="5" Name="ARM" Type="arm" Namespace="Main" x="2720" y="1700" />
-      <AdapterDeclaration ID="6" Name="ARM_A" Type="arm" Namespace="Main" x="2680" y="2820" />
-      <AdapterDeclaration ID="7" Name="MGZ_A" Type="mgz" Namespace="Main" x="2660" y="2300" />
+      <AdapterDeclaration ID="4" Name="MGZ" Type="mgz" Namespace="Main" x="1360" y="720" />
+      <AdapterDeclaration ID="5" Name="ARM" Type="arm" Namespace="Main" x="1300" y="1100" />
+      <AdapterDeclaration ID="6" Name="ARM_A" Type="arm" Namespace="Main" x="1260" y="2220" />
+      <AdapterDeclaration ID="7" Name="MGZ_A" Type="mgz" Namespace="Main" x="1240" y="1700" />
     </Sockets>
     <Plugs>
-      <AdapterDeclaration Name="arm_o" Type="arm" Namespace="Main" x="5380" y="1580" />
-      <AdapterDeclaration Name="mgz_o" Type="mgz" Namespace="Main" x="5400" y="1020" />
+      <AdapterDeclaration Name="arm_o" Type="arm" Namespace="Main" x="3960" y="980" />
+      <AdapterDeclaration Name="mgz_o" Type="mgz" Namespace="Main" x="3980" y="420" />
     </Plugs>
   </InterfaceList>
   <FBNetwork>
-    <FB ID="1" Name="FB5" Type="E_REND" x="4600" y="3020" Namespace="IEC61499.Standard" />
-    <FB ID="2" Name="FB6" Type="stop" x="4500" y="2360" Namespace="Main" />
-    <FB ID="3" Name="FB7" Type="manual" x="4500" y="1120" Namespace="Main" />
-    <Input Name="START" x="3870.354" y="2372" Type="Event" />
-    <Input Name="REQ" x="3917.75" y="1132" Type="Event" />
-    <Input Name="STOP" x="3100" y="1172" Type="Event" />
-    <Input Name="NOT_READY" x="4079.396" y="3152" Type="Event" />
-    <Input Name="READY_MGZ" x="4046.167" y="3092" Type="Event" />
-    <Input Name="READY_ARM" x="4046.167" y="3032" Type="Event" />
-    <Input Name="FB7_manual" x="3728.271" y="1392" Type="Data" />
-    <Output Name="STOP_O" x="5153.083" y="2372" Type="Event" />
-    <Output Name="READY" x="5065.688" y="3032" Type="Event" />
-    <Output Name="FB6_stop_flag" x="5153.083" y="2632" Type="Data" />
+    <FB ID="1" Name="FB5" Type="E_REND" x="3180" y="2420" Namespace="IEC61499.Standard" />
+    <FB ID="2" Name="FB6" Type="stop" x="3080" y="1760" Namespace="Main" />
+    <FB ID="3" Name="FB7" Type="manual" x="3080" y="520" Namespace="Main" />
+    <Input Name="START" x="2460" y="1772" Type="Event" />
+    <Input Name="REQ" x="2500" y="532" Type="Event" />
+    <Input Name="STOP" x="1680" y="572" Type="Event" />
+    <Input Name="NOT_READY" x="2660" y="2552" Type="Event" />
+    <Input Name="READY_MGZ" x="2620" y="2492" Type="Event" />
+    <Input Name="READY_ARM" x="2620" y="2432" Type="Event" />
+    <Input Name="FB7_manual" x="2300" y="792" Type="Data" />
+    <Output Name="STOP_O" x="3740" y="1772" Type="Event" />
+    <Output Name="READY" x="3640" y="2432" Type="Event" />
+    <Output Name="FB6_stop_flag" x="3740" y="2032" Type="Data" />
     <EventConnections>
       <Connection Source="START" Destination="FB6.START" />
       <Connection Source="FB6.CNF" Destination="STOP_O" />
@@ -68,84 +68,84 @@
       <Connection Source="ARM.CNF" Destination="FB7.REQ">
         <Points>
           <Points>
-            <X>757.302063</X>
-            <Y>435</Y>
+            <X>402.302063</X>
+            <Y>285</Y>
           </Points>
           <Points>
-            <X>777.5</X>
-            <Y>435</Y>
+            <X>422.5</X>
+            <Y>285</Y>
           </Points>
           <Points>
-            <X>777.5</X>
-            <Y>342.5</Y>
+            <X>422.5</X>
+            <Y>192.5</Y>
           </Points>
           <Points>
-            <X>1037.5</X>
-            <Y>342.5</Y>
+            <X>682.5</X>
+            <Y>192.5</Y>
           </Points>
           <Points>
-            <X>1037.5</X>
-            <Y>290</Y>
+            <X>682.5</X>
+            <Y>140</Y>
           </Points>
           <Points>
-            <X>1120</X>
-            <Y>290</Y>
+            <X>765</X>
+            <Y>140</Y>
           </Points>
         </Points>
       </Connection>
       <Connection Source="ARM_A.CNF" Destination="FB7.REQ">
         <Points>
           <Points>
-            <X>747.302063</X>
-            <Y>715</Y>
+            <X>392.302063</X>
+            <Y>565</Y>
           </Points>
           <Points>
-            <X>777.5</X>
-            <Y>715</Y>
+            <X>422.5</X>
+            <Y>565</Y>
           </Points>
           <Points>
-            <X>777.5</X>
-            <Y>342.5</Y>
+            <X>422.5</X>
+            <Y>192.5</Y>
           </Points>
           <Points>
-            <X>1037.5</X>
-            <Y>342.5</Y>
+            <X>682.5</X>
+            <Y>192.5</Y>
           </Points>
           <Points>
-            <X>1037.5</X>
-            <Y>290</Y>
+            <X>682.5</X>
+            <Y>140</Y>
           </Points>
           <Points>
-            <X>1120</X>
-            <Y>290</Y>
+            <X>765</X>
+            <Y>140</Y>
           </Points>
         </Points>
       </Connection>
       <Connection Source="MGZ_A.CNF" Destination="FB7.REQ">
         <Points>
           <Points>
-            <X>735.2291</X>
-            <Y>585</Y>
+            <X>380.229126</X>
+            <Y>435</Y>
           </Points>
           <Points>
-            <X>777.5</X>
-            <Y>585</Y>
+            <X>422.5</X>
+            <Y>435</Y>
           </Points>
           <Points>
-            <X>777.5</X>
-            <Y>342.5</Y>
+            <X>422.5</X>
+            <Y>192.5</Y>
           </Points>
           <Points>
-            <X>1037.5</X>
-            <Y>342.5</Y>
+            <X>682.5</X>
+            <Y>192.5</Y>
           </Points>
           <Points>
-            <X>1037.5</X>
-            <Y>290</Y>
+            <X>682.5</X>
+            <Y>140</Y>
           </Points>
           <Points>
-            <X>1120</X>
-            <Y>290</Y>
+            <X>765</X>
+            <Y>140</Y>
           </Points>
         </Points>
       </Connection>
