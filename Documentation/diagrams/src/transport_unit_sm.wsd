@@ -1,0 +1,42 @@
+@startuml Transport Unit 
+hide empty description
+
+
+[*] --> SETUP: INIT
+
+State "<b>SETUP</b>\n<i>move to initial state at the first boot</i>" as SETUP
+State "<b>INITIAL</b>\n<i>At magazine point</i>" as INITIAL
+State "<b>AUTOMATIC</b>\n<i>Working cycle</i>" as AUTO
+State "<b>STOP</b>\n<i>Stop at stable point, vacuum turned off</i>" as STOP
+State "<b>RESET</b>\n<i>Move to initial state</i>" as RESET
+
+SETUP-->INITIAL: magazine point sensor 
+INITIAL-->AUTO: button START
+AUTO-->STOP: button STOP
+STOP-->RESET: button RESET
+RESET --> INITIAL:magazine point sensor 
+
+
+
+state INITIAL{
+    INITIAL:<b>READY</b> 
+
+}
+
+state AUTO{
+    State "<b>PICK_UP</b>\n<i>Stable state</i>" as PICK_UP
+    State "<b>PICKED_UP</b>" as PICKED_UP
+    State "<b>PUT_DOWN</b>\n<i>Stable state</i>" as PD
+    State "<b>TO_MAGAZINE</b>" as TM
+    PICK_UP-->PICKED_UP: Vacuum monitor 
+    PICKED_UP --> PD: at next station
+    PD -->TM: NOT Vacuum monitor
+    TM --> PICK_UP: at magazine
+    
+
+}  
+
+
+
+
+@enduml

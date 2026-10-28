@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
+<FBType GUID="abdb566a-e4e6-4897-ae6c-598bb93ee7f0" Name="ButtonPanel_Control" Comment="Extracted Composite Function Block Type" Namespace="Main">
+  <Attribute Name="Configuration.FB.IDCounter" Value="12" />
+  <Identification Standard="61499-2" />
+  <VersionInfo Author="lizar" Date="10/19/2026" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="INIT" Comment="Event input">
+        <With Var="ack" />
+      </Event>
+      <Event Name="REQ" Comment="Normal Execution Request">
+        <With Var="start" />
+        <With Var="reset" />
+        <With Var="stop" />
+        <With Var="ack" />
+        <With Var="empty" />
+      </Event>
+      <Event Name="READY" />
+      <Event Name="NOT_READY" />
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="INITO">
+        <With Var="ack_led" />
+      </Event>
+      <Event Name="CNF" Comment="Execution Confirmation">
+        <With Var="start_led" />
+        <With Var="reset_led" />
+        <With Var="ack_led" />
+      </Event>
+      <Event Name="STOP" />
+      <Event Name="START">
+        <With Var="start_led" />
+      </Event>
+      <Event Name="RESET">
+        <With Var="reset_led" />
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Name="start" Type="BOOL" />
+      <VarDeclaration Name="reset" Type="BOOL" />
+      <VarDeclaration Name="ack" Type="BOOL" Comment="Event permission" />
+      <VarDeclaration Name="stop" Type="BOOL" />
+      <VarDeclaration Name="empty" Type="BOOL" />
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Name="start_led" Type="BOOL" />
+      <VarDeclaration Name="reset_led" Type="BOOL" />
+      <VarDeclaration Name="ack_led" Type="BOOL" Comment="Output event qualifier" />
+    </OutputVars>
+  </InterfaceList>
+  <FBNetwork>
+    <FB ID="1" Name="FB1" Type="Panel_button_cotrol" x="2440" y="2100" Namespace="Main" />
+    <FB ID="2" Name="FB2" Type="E_CYCLE" x="2600" y="3260" Namespace="IEC61499.Standard">
+      <Parameter Name="DT" Value="T#0.3s" />
+    </FB>
+    <FB ID="3" Name="FB3" Type="E_PERMIT" x="1520" y="1800" Namespace="IEC61499.Standard" />
+    <FB ID="4" Name="FB4" Type="E_PERMIT" x="1520" y="1420" Namespace="IEC61499.Standard" />
+    <FB ID="5" Name="FB5" Type="E_PERMIT" x="1500" y="1020" Namespace="IEC61499.Standard" />
+    <FB ID="6" Name="FB6" Type="E_PERMIT" x="1520" y="600" Namespace="IEC61499.Standard" />
+    <FB ID="10" Name="FB8" Type="EmptyControl" x="1480" y="80" Namespace="Main" />
+    <Input Name="INIT" x="2040" y="2112" Type="Event" />
+    <Input Name="REQ" x="320" y="1152" Type="Event" />
+    <Input Name="ack" x="720" y="2012" Type="Data" />
+    <Input Name="start" x="1040" y="1632" Type="Data" />
+    <Input Name="reset" x="1040" y="812" Type="Data" />
+    <Input Name="stop" x="980" y="1252" Type="Data" />
+    <Input Name="READY" x="2000" y="2472" Type="Event" />
+    <Input Name="NOT_READY" x="1880" y="2552" Type="Event" />
+    <Input Name="empty" x="860" y="312" Type="Data" />
+    <Output Name="CNF" x="3800" y="2172" Type="Event" />
+    <Output Name="start_led" x="4060" y="2552" Type="Data" />
+    <Output Name="reset_led" x="4060" y="2612" Type="Data" />
+    <Output Name="ack_led" x="4060" y="2672" Type="Data" />
+    <Output Name="STOP" x="1980" y="1032" Type="Event" />
+    <Output Name="START" x="2040" y="1432" Type="Event" />
+    <Output Name="RESET" x="1960" y="632" Type="Event" />
+    <Output Name="INITO" x="3800" y="2112" Type="Event" />
+    <EventConnections>
+      <Connection Source="FB1.START_TIMER" Destination="FB2.START" dx1="71.39624" dx2="69.99976" dy="778">
+        <AvoidsNodes>false</AvoidsNodes>
+      </Connection>
+      <Connection Source="FB1.STOP_TIMER" Destination="FB2.STOP" dx1="11.39624" dx2="89.99976" dy="718">
+        <AvoidsNodes>false</AvoidsNodes>
+      </Connection>
+      <Connection Source="FB2.EO" Destination="FB1.BLINK" dx1="28.5" dx2="520" dy="-310">
+        <AvoidsNodes>false</AvoidsNodes>
+      </Connection>
+      <Connection Source="FB3.EO" Destination="FB1.ACK" dx1="47.16663" />
+      <Connection Source="REQ" Destination="FB1.REQ" dx1="49.54169" />
+      <Connection Source="FB1.CNF" Destination="CNF" />
+      <Connection Source="REQ" Destination="FB3.EI" dx1="49.54175" />
+      <Connection Source="REQ" Destination="FB4.EI" dx1="49.54175" />
+      <Connection Source="FB4.EO" Destination="START" />
+      <Connection Source="INIT" Destination="FB1.INIT" />
+      <Connection Source="FB1.INITO" Destination="INITO" />
+      <Connection Source="REQ" Destination="FB5.EI" dx1="49.54175" />
+      <Connection Source="FB5.EO" Destination="STOP" />
+      <Connection Source="FB6.EO" Destination="RESET" dx1="40" dx2="40" dy="10" />
+      <Connection Source="REQ" Destination="FB6.EI" dx1="49.54175" />
+      <Connection Source="FB6.EO" Destination="FB1.RESET" dx1="47.16663" />
+      <Connection Source="READY" Destination="FB1.READY" />
+      <Connection Source="NOT_READY" Destination="FB1.NOT_READY" dx1="41.39575" />
+      <Connection Source="FB6.EO" Destination="FB8.REQ" dx1="377.1666" dx2="30" dy="-120">
+        <AvoidsNodes>false</AvoidsNodes>
+      </Connection>
+      <Connection Source="FB8.EMPTY" Destination="FB1.EMPTY" dx1="46.8335" />
+      <Connection Source="REQ" Destination="FB8.REQ" dx1="49.54169" />
+    </EventConnections>
+    <DataConnections>
+      <Connection Source="ack" Destination="FB3.PERMIT" />
+      <Connection Source="FB1.start_led" Destination="start_led" dx1="133.271" />
+      <Connection Source="FB1.reset_led" Destination="reset_led" dx1="153.271" />
+      <Connection Source="FB1.ack_led" Destination="ack_led" dx1="173.271" />
+      <Connection Source="FB1.ack_led" Destination="FB1.ack_led_i">
+        <Points>
+          <Points>
+            <X>784.1823</X>
+            <Y>720</Y>
+          </Points>
+          <Points>
+            <X>656.1617</X>
+            <Y>720</Y>
+          </Points>
+          <Points>
+            <X>656.1617</X>
+            <Y>738.5</Y>
+          </Points>
+          <Points>
+            <X>477.031433</X>
+            <Y>738.5</Y>
+          </Points>
+          <Points>
+            <X>477.031433</X>
+            <Y>690</Y>
+          </Points>
+          <Points>
+            <X>605</X>
+            <Y>690</Y>
+          </Points>
+        </Points>
+        <AvoidsNodes>false</AvoidsNodes>
+      </Connection>
+      <Connection Source="start" Destination="FB4.PERMIT" />
+      <Connection Source="stop" Destination="FB5.PERMIT" dx1="40" />
+      <Connection Source="reset" Destination="FB6.PERMIT" />
+      <Connection Source="empty" Destination="FB8.empty" dx1="44.0625" />
+    </DataConnections>
+  </FBNetwork>
+</FBType>

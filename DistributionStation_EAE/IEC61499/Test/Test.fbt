@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
+<FBType GUID="215E2403323B6187" Name="Test" Comment="Composite Function Block Type" Namespace="Main">
+  <Attribute Name="Configuration.FB.IDCounter" Value="3" />
+  <Identification Standard="61499-2" />
+  <VersionInfo Organization="nxtControl GmbH" Version="0.0" Author="Andrei" Date="7/14/2016" Remarks="template" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="INIT" Comment="Initialization Request" />
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="INITO" Comment="Initialization Confirm" />
+    </EventOutputs>
+    <Plugs>
+      <AdapterDeclaration Name="ARM" Type="arm" Namespace="Main" x="2680" y="1220" />
+      <AdapterDeclaration Name="MGZ" Type="mgz" Namespace="Main" x="2680" y="800" />
+    </Plugs>
+  </InterfaceList>
+  <FBNetwork>
+    <FB ID="1" Name="IThis" Type="Test_HMI" x="920" y="620" Namespace="Main">
+      <Parameter Name="QI" Value="TRUE" />
+    </FB>
+    <Input Name="INIT" x="500" y="631.8542" Type="Event" />
+    <Output Name="INITO" x="1460" y="631.8542" Type="Event" />
+    <EventConnections>
+      <Connection Source="INIT" Destination="IThis.INIT" dx1="40.83337" />
+      <Connection Source="IThis.INITO" Destination="INITO" dx1="50" />
+      <Connection Source="IThis.CNF" Destination="MGZ.CNF" dx1="141.1041" />
+      <Connection Source="IThis.CNF" Destination="ARM.CNF" dx1="661.1041" />
+    </EventConnections>
+    <DataConnections>
+      <Connection Source="IThis.retract" Destination="MGZ.retract" />
+      <Connection Source="IThis.to_mgz" Destination="ARM.to_mgz" dx1="41.10413" />
+      <Connection Source="IThis.to_next" Destination="ARM.to_next" dx1="41.10413" />
+      <Connection Source="IThis.vcm_on" Destination="ARM.vcm_on" dx1="41.10413" />
+      <Connection Source="IThis.vcm_off" Destination="ARM.vcm_off" dx1="41.10413" />
+    </DataConnections>
+  </FBNetwork>
+</FBType>

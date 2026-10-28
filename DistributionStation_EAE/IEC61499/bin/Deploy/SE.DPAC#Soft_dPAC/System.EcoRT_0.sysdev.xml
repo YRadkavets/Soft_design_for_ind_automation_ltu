@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<System Name="System" ProjectName="DistributionStation_EAE" ProjectGuid="{6CABFB28-5AC2-4ED5-B23B-1C5638756E6E}" BuildTime="2026-10-27 19:23:05Z" DeployTime="" StudioVersion="IEC 61499 IDE, Panther UAOv23.0 g5173 4181ef5 Thu Oct 12 16:53:40 2023" SnapshotGuid="{94AEA02B-D05D-47ED-A4AC-8E57347F6007}">
+  <Device ID="D166C33F-F415-406D-AF33-1F9D600E8C6B" Name="EcoRT_0" Type="Soft_dPAC" Namespace="SE.DPAC">
+    <Resource ID="A915E0452356BD1" Name="RES0" Type="EMB_RES_ECO" Namespace="Runtime.Management">
+      <FBNetwork>
+        <FB ID="449F5213D11653A3" Name="TestPanel" Type="Test" Namespace="Main" />
+        <FB ID="2296FA8D8232BF54" Name="DistributionStation" Type="Model" Namespace="Main" />
+        <FB ID="42AD414C1D0D1405" Name="PanelButtons" Type="ButtonsPanel" Namespace="Main" />
+        <FB ID="69E57BDDC7811FDC" Name="FB2" Type="MGZ_IMC" Namespace="Main" />
+        <FB ID="9B1E8EC2DB7CB2F0" Name="FB1" Type="supervision" Namespace="Main" />
+        <FB ID="10591396D526E045" Name="FB5" Type="ARM_IMC" Namespace="Main" />
+        <FB ID="90B8072B3C749DBE" Name="FB3" Type="Button_IMC" Namespace="Main" />
+        <FB Name="START" Type="E_RESTART" Namespace="IEC61499.Standard" />
+        <EventConnections>
+          <Connection Source="TestPanel.INITO" Destination="DistributionStation.INIT" />
+          <Connection Source="START.COLD" Destination="TestPanel.INIT" />
+          <Connection Source="DistributionStation.INITO" Destination="PanelButtons.INIT" />
+          <Connection Source="DistributionStation.INITO" Destination="FB2.INIT" />
+          <Connection Source="PanelButtons.INITO" Destination="FB2.REQ" />
+          <Connection Source="FB1.STOP_O" Destination="FB2.REQ" />
+          <Connection Source="FB2.READY" Destination="FB1.READY_MGZ" />
+          <Connection Source="FB2.NOT_READY" Destination="FB1.NOT_READY" />
+          <Connection Source="FB5.READY" Destination="FB1.READY_ARM" />
+          <Connection Source="FB5.NOT_READY" Destination="FB1.NOT_READY" />
+          <Connection Source="TestPanel.INITO" Destination="FB5.INIT" />
+          <Connection Source="DistributionStation.CNF" Destination="FB5.REQ" />
+          <Connection Source="PanelButtons.INITO" Destination="FB5.REQ" />
+          <Connection Source="FB1.STOP_O" Destination="FB5.REQ" />
+          <Connection Source="DistributionStation.INITO" Destination="FB3.FB4_INIT" />
+          <Connection Source="FB1.READY" Destination="FB3.FB4_READY" />
+          <Connection Source="FB5.NOT_READY" Destination="FB3.FB4_NOT_READY" />
+          <Connection Source="FB2.NOT_READY" Destination="FB3.FB4_NOT_READY" />
+          <Connection Source="FB3.FB4_START" Destination="FB2.START" />
+          <Connection Source="FB3.FB4_START" Destination="FB1.START" />
+          <Connection Source="FB3.FB4_START" Destination="FB5.START" />
+          <Connection Source="FB3.FB4_RESET" Destination="FB2.RESET" />
+          <Connection Source="FB3.FB4_RESET" Destination="FB5.RESET" />
+          <Connection Source="FB3.FB4_STOP" Destination="FB1.STOP" />
+          <Connection Source="PanelButtons.CNF" Destination="FB5.REQ" />
+          <Connection Source="PanelButtons.CNF" Destination="FB2.REQ" />
+          <Connection Source="PanelButtons.CNF" Destination="FB1.REQ" />
+        </EventConnections>
+        <DataConnections>
+          <Connection Source="PanelButtons.manual" Destination="FB1.FB7_manual" />
+          <Connection Source="FB1.FB6_stop_flag" Destination="FB2.stop_flag" />
+          <Connection Source="PanelButtons.manual" Destination="FB5.manual" />
+          <Connection Source="FB1.FB6_stop_flag" Destination="FB5.stop_flag" />
+          <Connection Source="PanelButtons.manual" Destination="FB2.manual" />
+        </DataConnections>
+        <AdapterConnections>
+          <Connection Source="TestPanel.MGZ" Destination="FB1.MGZ" />
+          <Connection Source="TestPanel.ARM" Destination="FB1.ARM" />
+          <Connection Source="FB2.mgz" Destination="FB1.MGZ_A" />
+          <Connection Source="DistributionStation.mgz_sensor" Destination="FB2.mgz_sensor" />
+          <Connection Source="FB1.arm_o" Destination="DistributionStation.arm" />
+          <Connection Source="FB1.mgz_o" Destination="DistributionStation.mgz" />
+          <Connection Source="FB5.arm_a" Destination="FB1.ARM_A" />
+          <Connection Source="DistributionStation.arm_sensor" Destination="FB5.arm_sensors" />
+          <Connection Source="DistributionStation.empty" Destination="FB3.empty" />
+          <Connection Source="FB3.buttons" Destination="PanelButtons.buttons" />
+        </AdapterConnections>
+      </FBNetwork>
+    </Resource>
+    <FBNetwork />
+  </Device>
+</System>

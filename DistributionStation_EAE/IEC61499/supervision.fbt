@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
+<FBType GUID="b4cbe305-be2a-4451-8316-68b8aee476a2" Name="supervision" Comment="Extracted Composite Function Block Type" Namespace="Main">
+  <Attribute Name="Configuration.FB.IDCounter" Value="9" />
+  <Identification Standard="61499-2" />
+  <VersionInfo Author="lizar" Date="10/27/2026" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="REQ" Comment="Initialization Request">
+        <With Var="FB7_manual" />
+      </Event>
+      <Event Name="START" Comment="Initialization Request" />
+      <Event Name="STOP">
+        <With Var="FB7_manual" />
+      </Event>
+      <Event Name="NOT_READY" Comment="Reset Event" />
+      <Event Name="READY_MGZ" Comment="Second Event Input" />
+      <Event Name="READY_ARM" Comment="First Event Input" />
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="STOP_O" Comment="Execution Confirmation">
+        <With Var="FB6_stop_flag" />
+      </Event>
+      <Event Name="READY" Comment="Rendezvous Output Event" />
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Name="FB7_manual" Type="BOOL" />
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Name="FB6_stop_flag" Type="BOOL" Comment="Output event qualifier" />
+    </OutputVars>
+    <Sockets>
+      <AdapterDeclaration ID="4" Name="MGZ" Type="mgz" Namespace="Main" x="1360" y="720" />
+      <AdapterDeclaration ID="5" Name="ARM" Type="arm" Namespace="Main" x="1300" y="1100" />
+      <AdapterDeclaration ID="6" Name="ARM_A" Type="arm" Namespace="Main" x="1260" y="2220" />
+      <AdapterDeclaration ID="7" Name="MGZ_A" Type="mgz" Namespace="Main" x="1240" y="1700" />
+    </Sockets>
+    <Plugs>
+      <AdapterDeclaration Name="arm_o" Type="arm" Namespace="Main" x="3960" y="980" />
+      <AdapterDeclaration Name="mgz_o" Type="mgz" Namespace="Main" x="3980" y="420" />
+    </Plugs>
+  </InterfaceList>
+  <FBNetwork>
+    <FB ID="1" Name="FB5" Type="E_REND" x="3180" y="2420" Namespace="IEC61499.Standard" />
+    <FB ID="2" Name="FB6" Type="stop" x="3080" y="1760" Namespace="Main" />
+    <FB ID="3" Name="FB7" Type="manual" x="3080" y="520" Namespace="Main" />
+    <Input Name="START" x="2460" y="1772" Type="Event" />
+    <Input Name="REQ" x="2500" y="532" Type="Event" />
+    <Input Name="STOP" x="1680" y="572" Type="Event" />
+    <Input Name="NOT_READY" x="2660" y="2552" Type="Event" />
+    <Input Name="READY_MGZ" x="2620" y="2492" Type="Event" />
+    <Input Name="READY_ARM" x="2620" y="2432" Type="Event" />
+    <Input Name="FB7_manual" x="2300" y="792" Type="Data" />
+    <Output Name="STOP_O" x="3740" y="1772" Type="Event" />
+    <Output Name="READY" x="3640" y="2432" Type="Event" />
+    <Output Name="FB6_stop_flag" x="3740" y="2032" Type="Data" />
+    <EventConnections>
+      <Connection Source="START" Destination="FB6.START" />
+      <Connection Source="FB6.CNF" Destination="STOP_O" />
+      <Connection Source="REQ" Destination="FB7.REQ" />
+      <Connection Source="STOP" Destination="FB7.STOP" dx1="45.83325" />
+      <Connection Source="NOT_READY" Destination="FB5.R" />
+      <Connection Source="READY_MGZ" Destination="FB5.EI2" />
+      <Connection Source="READY_ARM" Destination="FB5.EI1" />
+      <Connection Source="FB5.EO" Destination="READY" />
+      <Connection Source="STOP" Destination="FB6.STOP" dx1="45.83325" />
+      <Connection Source="MGZ.CNF" Destination="FB7.REQ" dx1="1089.083" />
+      <Connection Source="ARM.CNF" Destination="FB7.REQ">
+        <Points>
+          <Points>
+            <X>402.302063</X>
+            <Y>285</Y>
+          </Points>
+          <Points>
+            <X>422.5</X>
+            <Y>285</Y>
+          </Points>
+          <Points>
+            <X>422.5</X>
+            <Y>192.5</Y>
+          </Points>
+          <Points>
+            <X>682.5</X>
+            <Y>192.5</Y>
+          </Points>
+          <Points>
+            <X>682.5</X>
+            <Y>140</Y>
+          </Points>
+          <Points>
+            <X>765</X>
+            <Y>140</Y>
+          </Points>
+        </Points>
+      </Connection>
+      <Connection Source="ARM_A.CNF" Destination="FB7.REQ">
+        <Points>
+          <Points>
+            <X>392.302063</X>
+            <Y>565</Y>
+          </Points>
+          <Points>
+            <X>422.5</X>
+            <Y>565</Y>
+          </Points>
+          <Points>
+            <X>422.5</X>
+            <Y>192.5</Y>
+          </Points>
+          <Points>
+            <X>682.5</X>
+            <Y>192.5</Y>
+          </Points>
+          <Points>
+            <X>682.5</X>
+            <Y>140</Y>
+          </Points>
+          <Points>
+            <X>765</X>
+            <Y>140</Y>
+          </Points>
+        </Points>
+      </Connection>
+      <Connection Source="MGZ_A.CNF" Destination="FB7.REQ">
+        <Points>
+          <Points>
+            <X>380.229126</X>
+            <Y>435</Y>
+          </Points>
+          <Points>
+            <X>422.5</X>
+            <Y>435</Y>
+          </Points>
+          <Points>
+            <X>422.5</X>
+            <Y>192.5</Y>
+          </Points>
+          <Points>
+            <X>682.5</X>
+            <Y>192.5</Y>
+          </Points>
+          <Points>
+            <X>682.5</X>
+            <Y>140</Y>
+          </Points>
+          <Points>
+            <X>765</X>
+            <Y>140</Y>
+          </Points>
+        </Points>
+      </Connection>
+      <Connection Source="FB7.CNF" Destination="arm_o.CNF" dx1="80" />
+      <Connection Source="FB7.CNF" Destination="mgz_o.CNF" dx1="52.5" />
+    </EventConnections>
+    <DataConnections>
+      <Connection Source="FB6.stop_flag" Destination="FB6_stop_flag" />
+      <Connection Source="FB7_manual" Destination="FB7.manual" />
+      <Connection Source="MGZ.retract" Destination="FB7.retract_m" dx1="70" />
+      <Connection Source="ARM.to_mgz" Destination="FB7.to_mgz_m" dx1="80.79175" />
+      <Connection Source="ARM.to_next" Destination="FB7.to_next_m" dx1="90" />
+      <Connection Source="ARM.vcm_on" Destination="FB7.vcm_on_m" dx1="110" />
+      <Connection Source="ARM.vcm_off" Destination="FB7.vcm_off_m" dx1="130" />
+      <Connection Source="ARM_A.to_mgz" Destination="FB7.to_mgz_a" dx1="80.79175" />
+      <Connection Source="ARM_A.to_next" Destination="FB7.to_next_a" dx1="80.79175" />
+      <Connection Source="ARM_A.vcm_on" Destination="FB7.vcm_on_a" dx1="90" />
+      <Connection Source="ARM_A.vcm_off" Destination="FB7.vcm_off_a" dx1="110" />
+      <Connection Source="MGZ_A.retract" Destination="FB7.retract_a" dx1="129.0833" />
+      <Connection Source="FB7.to_mgz" Destination="arm_o.to_mgz" dx1="40" />
+      <Connection Source="FB7.to_next" Destination="arm_o.to_next" dx1="40" />
+      <Connection Source="FB7.vcm_on" Destination="arm_o.vcm_on" dx1="40" />
+      <Connection Source="FB7.vcm_off" Destination="arm_o.vcm_off" dx1="40" />
+      <Connection Source="FB7.retract" Destination="mgz_o.retract" dx1="72.5" />
+    </DataConnections>
+  </FBNetwork>
+</FBType>

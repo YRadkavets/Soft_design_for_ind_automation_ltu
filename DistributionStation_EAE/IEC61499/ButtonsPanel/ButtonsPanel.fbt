@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
+<FBType GUID="37F8E71C3837F071" Name="ButtonsPanel" Comment="Composite Function Block Type" Namespace="Main">
+  <Attribute Name="Configuration.FB.IDCounter" Value="2" />
+  <Identification Standard="61499-2" />
+  <VersionInfo Organization="nxtControl GmbH" Version="0.0" Author="Andrei" Date="7/13/2016" Remarks="template" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="INIT" Comment="Initialization Request" />
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="INITO" Comment="Initialization Confirm">
+        <With Var="manual" />
+      </Event>
+      <Event Name="CNF">
+        <With Var="manual" />
+      </Event>
+    </EventOutputs>
+    <OutputVars>
+      <VarDeclaration Name="manual" Type="BOOL" />
+    </OutputVars>
+    <Sockets>
+      <AdapterDeclaration ID="2" Name="buttons" Type="buttons" Namespace="Main" x="2420" y="520" />
+    </Sockets>
+  </InterfaceList>
+  <FBNetwork>
+    <FB ID="1" Name="IThis" Type="ButtonsPanel_HMI" x="1000" y="400" Namespace="Main">
+      <Parameter Name="QI" Value="TRUE" />
+    </FB>
+    <Input Name="INIT" x="300" y="411.8542" Type="Event" />
+    <Output Name="CNF" x="1942.542" y="12" Type="Event" />
+    <Output Name="INITO" x="1700" y="471.8542" Type="Event" />
+    <Output Name="manual" x="2120" y="1072" Type="Data" />
+    <EventConnections>
+      <Connection Source="INIT" Destination="IThis.INIT" dx1="40.83337" />
+      <Connection Source="IThis.INITO" Destination="IThis.INIT1" dx1="186.1042" dx2="70" dy="-110" />
+      <Connection Source="buttons.CNF" Destination="IThis.REQ" dx1="40" dx2="30" dy="-230" />
+      <Connection Source="IThis.INITO1" Destination="INITO" dx1="86.10425" />
+      <Connection Source="IThis.CNF" Destination="buttons.REQ" />
+      <Connection Source="IThis.CNF" Destination="CNF" dx1="90" />
+    </EventConnections>
+    <DataConnections>
+      <Connection Source="buttons.start_led" Destination="IThis.start_led" dx1="80" dx2="130" dy="-430" />
+      <Connection Source="buttons.reset_led" Destination="IThis.reset_led" dx1="60" dx2="150" dy="450" />
+      <Connection Source="buttons.ack_led" Destination="IThis.ack_led" dx1="40" dx2="170" dy="390" />
+      <Connection Source="IThis.start" Destination="buttons.start" dx1="110" />
+      <Connection Source="IThis.reset" Destination="buttons.reset" dx1="130" />
+      <Connection Source="IThis.ack" Destination="buttons.ack" dx1="150" />
+      <Connection Source="IThis.manual" Destination="manual" dx1="66.10413" />
+      <Connection Source="IThis.stop" Destination="buttons.stop" dx1="190" />
+    </DataConnections>
+  </FBNetwork>
+</FBType>

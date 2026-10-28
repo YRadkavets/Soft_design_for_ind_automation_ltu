@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
+<FBType GUID="954a5b99-16a6-47ff-ae1c-09302e5f9bd1" Name="Button_IMC" Comment="Extracted Composite Function Block Type" Namespace="Main">
+  <Attribute Name="Configuration.FB.IDCounter" Value="3" />
+  <Identification Standard="61499-2" />
+  <VersionInfo Author="lizar" Date="10/27/2026" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="FB4_INIT" Comment="Event input" />
+      <Event Name="FB4_READY" />
+      <Event Name="FB4_NOT_READY" />
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="FB4_INITO" />
+      <Event Name="FB4_STOP" />
+      <Event Name="FB4_RESET" />
+      <Event Name="FB4_START" />
+    </EventOutputs>
+    <Sockets>
+      <AdapterDeclaration ID="3" Name="empty" Type="mgz_sensor" Namespace="Main" x="740" y="3000" />
+    </Sockets>
+    <Plugs>
+      <AdapterDeclaration Name="buttons" Type="buttons" Namespace="Main" x="1520" y="3080" />
+    </Plugs>
+  </InterfaceList>
+  <FBNetwork>
+    <FB ID="1" Name="FB4" Type="ButtonPanel_Control" x="2800" y="2840" Namespace="Main" />
+    <Input Name="FB4_INIT" x="2229.625" y="2852" Type="Event" />
+    <Input Name="FB4_READY" x="2163.208" y="2972" Type="Event" />
+    <Input Name="FB4_NOT_READY" x="2049.604" y="3032" Type="Event" />
+    <Output Name="FB4_INITO" x="3576.188" y="2852" Type="Event" />
+    <Output Name="FB4_STOP" x="3576.188" y="2972" Type="Event" />
+    <Output Name="FB4_RESET" x="3576.188" y="3092" Type="Event" />
+    <Output Name="FB4_START" x="3576.188" y="3032" Type="Event" />
+    <EventConnections>
+      <Connection Source="FB4.RESET" Destination="FB4.INIT" dx1="133.8125" dx2="90" dy="-350" />
+      <Connection Source="FB4_INIT" Destination="FB4.INIT" />
+      <Connection Source="FB4_READY" Destination="FB4.READY" />
+      <Connection Source="FB4_NOT_READY" Destination="FB4.NOT_READY" />
+      <Connection Source="FB4.INITO" Destination="FB4_INITO" />
+      <Connection Source="FB4.STOP" Destination="FB4_STOP" />
+      <Connection Source="FB4.RESET" Destination="FB4_RESET" />
+      <Connection Source="FB4.START" Destination="FB4_START" />
+      <Connection Source="buttons.REQ" Destination="FB4.REQ" dx1="59.5625" />
+      <Connection Source="FB4.CNF" Destination="buttons.CNF" dx1="40" dx2="50" dy="-170" />
+      <Connection Source="empty.CNF" Destination="FB4.REQ" dx1="57.79163" />
+    </EventConnections>
+    <DataConnections>
+      <Connection Source="buttons.start" Destination="FB4.start" />
+      <Connection Source="buttons.reset" Destination="FB4.reset" />
+      <Connection Source="buttons.ack" Destination="FB4.ack" />
+      <Connection Source="buttons.stop" Destination="FB4.stop" />
+      <Connection Source="FB4.start_led" Destination="buttons.start_led" dx1="40" dx2="30" dy="330" />
+      <Connection Source="FB4.reset_led" Destination="buttons.reset_led" dx1="40" dx2="30" dy="270" />
+      <Connection Source="FB4.ack_led" Destination="buttons.ack_led" dx1="40" dx2="30" dy="210" />
+      <Connection Source="empty.empty" Destination="FB4.empty">
+        <Points>
+          <Points>
+            <X>258.0521</X>
+            <Y>840</Y>
+          </Points>
+          <Points>
+            <X>268.0521</X>
+            <Y>840</Y>
+          </Points>
+          <Points>
+            <X>268.0521</X>
+            <Y>897.5</Y>
+          </Points>
+          <Points>
+            <X>492.5</X>
+            <Y>897.5</Y>
+          </Points>
+          <Points>
+            <X>492.5</X>
+            <Y>890</Y>
+          </Points>
+          <Points>
+            <X>695</X>
+            <Y>890</Y>
+          </Points>
+        </Points>
+      </Connection>
+    </DataConnections>
+  </FBNetwork>
+</FBType>

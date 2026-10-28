@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
+<FBType GUID="a1992ed6-41b1-4184-9e3a-f488e9ad3710" Name="ARM_IMC" Comment="Extracted Composite Function Block Type" Namespace="Main">
+  <Attribute Name="Configuration.FB.IDCounter" Value="4" />
+  <Identification Standard="61499-2" />
+  <VersionInfo Author="lizar" Date="10/27/2026" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="INIT" Comment="Initialization Request">
+        <With Var="manual" />
+      </Event>
+      <Event Name="REQ" Comment="Normal Execution Request">
+        <With Var="manual" />
+        <With Var="stop_flag" />
+      </Event>
+      <Event Name="START" />
+      <Event Name="RESET" />
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="READY" />
+      <Event Name="NOT_READY" />
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Name="manual" Type="BOOL" />
+      <VarDeclaration Name="stop_flag" Type="BOOL" />
+    </InputVars>
+    <Sockets>
+      <AdapterDeclaration ID="4" Name="arm_sensors" Type="arm_sensor" Namespace="Main" x="1040" y="800" />
+    </Sockets>
+    <Plugs>
+      <AdapterDeclaration Name="arm_a" Type="arm" Namespace="Main" x="3900" y="880" />
+    </Plugs>
+  </InterfaceList>
+  <FBNetwork>
+    <FB ID="1" Name="FB3" Type="ARM_Control" x="2240" y="800" Namespace="Main" />
+    <Input Name="INIT" x="1660" y="812" Type="Event" />
+    <Input Name="REQ" x="1660" y="872" Type="Event" />
+    <Input Name="START" x="1620" y="932" Type="Event" />
+    <Input Name="RESET" x="1600" y="992" Type="Event" />
+    <Input Name="manual" x="1460" y="1372" Type="Data" />
+    <Input Name="stop_flag" x="1440" y="1432" Type="Data" />
+    <Output Name="READY" x="3020" y="932" Type="Event" />
+    <Output Name="NOT_READY" x="3020" y="992" Type="Event" />
+    <EventConnections>
+      <Connection Source="INIT" Destination="FB3.INIT" />
+      <Connection Source="REQ" Destination="FB3.REQ" />
+      <Connection Source="START" Destination="FB3.START" />
+      <Connection Source="RESET" Destination="FB3.RESET" />
+      <Connection Source="FB3.READY" Destination="READY" />
+      <Connection Source="FB3.NOT_READY" Destination="NOT_READY" />
+      <Connection Source="FB3.CNF" Destination="arm_a.CNF" dx1="536.1667" />
+      <Connection Source="arm_sensors.REQ" Destination="FB3.REQ">
+        <Points>
+          <Points>
+            <X>334.942719</X>
+            <Y>210</Y>
+          </Points>
+          <Points>
+            <X>359.942719</X>
+            <Y>210</Y>
+          </Points>
+          <Points>
+            <X>359.942719</X>
+            <Y>197.5</Y>
+          </Points>
+          <Points>
+            <X>477.5</X>
+            <Y>197.5</Y>
+          </Points>
+          <Points>
+            <X>477.5</X>
+            <Y>225</Y>
+          </Points>
+          <Points>
+            <X>555</X>
+            <Y>225</Y>
+          </Points>
+        </Points>
+      </Connection>
+    </EventConnections>
+    <DataConnections>
+      <Connection Source="manual" Destination="FB3.manual" />
+      <Connection Source="stop_flag" Destination="FB3.stop_flag" />
+      <Connection Source="FB3.to_mgz" Destination="arm_a.to_mgz" dx1="116.1667" />
+      <Connection Source="FB3.to_next" Destination="arm_a.to_next" dx1="136.1667" />
+      <Connection Source="FB3.vcm_on" Destination="arm_a.vcm_on" dx1="156.1667" />
+      <Connection Source="FB3.vcm_off" Destination="arm_a.vcm_off" dx1="176.1667" />
+      <Connection Source="arm_sensors.at_mgz" Destination="FB3.at_mgz" dx1="80" />
+      <Connection Source="arm_sensors.at_next" Destination="FB3.at_next" dx1="60" />
+      <Connection Source="arm_sensors.v_mon" Destination="FB3.v_mon" dx1="40" />
+    </DataConnections>
+  </FBNetwork>
+</FBType>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FBType SYSTEM "../LibraryElement.dtd">
+<FBType GUID="95fdf2c1-b32e-431a-b868-39778e63d1d7" Name="MGZ_IMC" Comment="Extracted Composite Function Block Type" Namespace="Main">
+  <Attribute Name="Configuration.FB.IDCounter" Value="4" />
+  <Identification Standard="61499-2" />
+  <VersionInfo Author="lizar" Date="10/20/2026" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="INIT" Comment="Initialization Request">
+        <With Var="manual" />
+      </Event>
+      <Event Name="REQ" Comment="Normal Execution Request">
+        <With Var="manual" />
+        <With Var="stop_flag" />
+      </Event>
+      <Event Name="START" />
+      <Event Name="RESET" />
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="NOT_READY" />
+      <Event Name="READY" />
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Name="manual" Type="BOOL" />
+      <VarDeclaration Name="stop_flag" Type="BOOL" />
+    </InputVars>
+    <Sockets>
+      <AdapterDeclaration ID="4" Name="mgz_sensor" Type="mgz_sensor" Namespace="Main" x="1240" y="1440" />
+    </Sockets>
+    <Plugs>
+      <AdapterDeclaration Name="mgz" Type="mgz" Namespace="Main" x="3580" y="1340" />
+    </Plugs>
+  </InterfaceList>
+  <FBNetwork>
+    <FB ID="1" Name="FB2" Type="Automatic_storage_sm" x="2460" y="700" Namespace="Main" />
+    <FB ID="2" Name="FB3" Type="E_DELAY" x="2600" y="1720" Namespace="IEC61499.Standard">
+      <Parameter Name="DT" Value="T#200ms" />
+    </FB>
+    <Input Name="INIT" x="1880" y="712" Type="Event" />
+    <Input Name="REQ" x="1500" y="772" Type="Event" />
+    <Input Name="START" x="1840" y="832" Type="Event" />
+    <Input Name="manual" x="1780" y="1332" Type="Data" />
+    <Input Name="stop_flag" x="1760" y="1392" Type="Data" />
+    <Input Name="RESET" x="1900" y="932" Type="Event" />
+    <Output Name="NOT_READY" x="3280" y="952" Type="Event" />
+    <Output Name="READY" x="3280" y="832" Type="Event" />
+    <EventConnections>
+      <Connection Source="FB2.START_TIMER" Destination="FB3.START" dx1="81.89575" dx2="50" dy="590" />
+      <Connection Source="FB3.EO" Destination="FB2.TIMEOUT" dx1="48.5" dx2="150" dy="-110" />
+      <Connection Source="INIT" Destination="FB2.INIT" />
+      <Connection Source="REQ" Destination="FB2.REQ" />
+      <Connection Source="START" Destination="FB2.START" />
+      <Connection Source="FB2.NOT_READY" Destination="NOT_READY" />
+      <Connection Source="FB2.READY" Destination="READY" />
+      <Connection Source="RESET" Destination="FB2.RESET" dx1="40" />
+      <Connection Source="FB2.CNF" Destination="mgz.CNF" dx1="121.8958" />
+      <Connection Source="mgz_sensor.CNF" Destination="FB2.REQ">
+        <Points>
+          <Points>
+            <X>383.0521</X>
+            <Y>370</Y>
+          </Points>
+          <Points>
+            <X>393.0521</X>
+            <Y>370</Y>
+          </Points>
+          <Points>
+            <X>393.0521</X>
+            <Y>282.5</Y>
+          </Points>
+          <Points>
+            <X>437.5</X>
+            <Y>282.5</Y>
+          </Points>
+          <Points>
+            <X>437.5</X>
+            <Y>200</Y>
+          </Points>
+          <Points>
+            <X>610</X>
+            <Y>200</Y>
+          </Points>
+        </Points>
+      </Connection>
+    </EventConnections>
+    <DataConnections>
+      <Connection Source="manual" Destination="FB2.manual" />
+      <Connection Source="stop_flag" Destination="FB2.stop_flag" />
+      <Connection Source="FB2.retract" Destination="mgz.retract" dx1="41.89575" />
+      <Connection Source="mgz_sensor.pos_e" Destination="FB2.pos_e" dx1="77.79163" />
+      <Connection Source="mgz_sensor.pos_r" Destination="FB2.pos_r" dx1="97.79163" />
+      <Connection Source="mgz_sensor.empty" Destination="FB2.empty" dx1="117.7916" />
+    </DataConnections>
+  </FBNetwork>
+</FBType>
